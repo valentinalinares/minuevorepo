@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apuntes — Husserl: Meditaciones Cartesianas</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1510;
+    --sepia: #6b5a3e;
+    --rust: #8b3a2a;
+    --gold: #c9973a;
+    --pale: #ede8dc;
+    --line: #d4cbbf;
+    --white: #fdfaf4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    padding: 2rem 1rem 5rem;
+  }
+
+  .page {
+    max-width: 740px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  header {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 1.4rem;
+    margin-bottom: 2.8rem;
+  }
+
+  .curso {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    margin-bottom: 0.5rem;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--ink);
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  header h1 em { font-style: italic; color: var(--rust); }
+
+  .subtitulo {
+    font-size: 0.88rem;
+    color: var(--sepia);
+    margin-top: 0.4rem;
+    font-style: italic;
+  }
+
+  /* SECCIONES */
+  section {
+    margin-bottom: 3rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1.8rem;
+  }
+
+  h2 {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.1rem;
+  }
+
+  h3 {
+    font-size: 1.13rem;
+    font-weight: 600;
+    color: var(--rust);
+    margin-bottom: 0.6rem;
+    margin-top: 1.5rem;
+  }
+
+  p { margin-bottom: 0.9rem; }
+
+  /* APUNTE LITERAL */
+  .nota-profe {
+    background: var(--pale);
+    border-left: 3px solid var(--gold);
+    padding: 0.7rem 1rem;
+    margin: 0.9rem 0 1.1rem;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--sepia);
+  }
+  .nota-profe::before {
+    content: "✎ Profe:";
+    font-style: normal;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    display: block;
+    color: var(--gold);
+    margin-bottom: 0.25rem;
+  }
+
+  /* PREGUNTA */
+  .pregunta {
+    background: var(--white);
+    border: 1px solid var(--line);
+    padding: 0.8rem 1rem;
+    margin: 0.9rem 0 1.1rem;
+    font-size: 0.96rem;
+  }
+  .pregunta::before {
+    content: "? Pregunta de clase";
+    display: block;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    color: var(--rust);
+    margin-bottom: 0.3rem;
+  }
+
+  /* MI PREGUNTA */
+  .mi-pregunta {
+    font-style: italic;
+    color: var(--sepia);
+    padding-left: 0.9rem;
+    border-left: 2px dashed var(--gold);
+    margin: 0.9rem 0;
+  }
+  .mi-pregunta::before {
+    content: "Yo pregunté:";
+    font-style: normal;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    display: block;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+
+  /* TÉRMINO TÉCNICO */
+  .t {
+    background: var(--ink);
+    color: var(--cream);
+    display: inline-block;
+    padding: 0.05em 0.4em;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    border-radius: 1px;
+    vertical-align: middle;
+    margin: 0 2px;
+  }
+
+  /* CAJA CONCEPTO */
+  .concepto {
+    border: 1px solid var(--ink);
+    padding: 1rem 1.15rem;
+    margin: 1.1rem 0;
+    position: relative;
+  }
+  .concepto-label {
+    position: absolute;
+    top: -0.65rem;
+    left: 0.8rem;
+    background: var(--cream);
+    padding: 0 0.35rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--sepia);
+  }
+
+  /* RESPUESTA */
+  .respuesta {
+    border-left: 3px solid var(--rust);
+    padding-left: 1rem;
+    margin: 0.6rem 0 1.1rem 0.4rem;
+  }
+
+  /* DIAGRAMA TEXTO */
+  .diagrama {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.77rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    padding: 1.2rem 1.4rem;
+    margin: 1.1rem 0;
+    line-height: 2;
+    color: var(--sepia);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .diagrama b { color: var(--ink); }
+
+  ul {
+    padding-left: 1.5rem;
+    margin-bottom: 0.9rem;
+  }
+  li { margin-bottom: 0.45rem; }
+
+  /* SVG DIAGRAMA CONTAINER */
+  .svg-wrap {
+    margin: 1.4rem 0;
+    text-align: center;
+  }
+  .svg-wrap svg {
+    max-width: 100%;
+    height: auto;
+  }
+  .svg-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  /* TABLA COMPARATIVA */
+  .tabla-comp {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.2rem 0;
+    font-size: 0.92rem;
+  }
+  .tabla-comp th {
+    background: var(--ink);
+    color: var(--cream);
+    font-family: 'Space Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    font-weight: normal;
+  }
+  .tabla-comp td {
+    border: 1px solid var(--line);
+    padding: 0.65rem 0.9rem;
+    vertical-align: top;
+    background: var(--white);
+  }
+  .tabla-comp tr:nth-child(odd) td { background: var(--pale); }
+
+  /* GLOSARIO */
+  .glosario-item {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0 1.2rem;
+    border-bottom: 1px solid var(--line);
+    padding: 0.7rem 0;
+    font-size: 0.93rem;
+  }
+  .glosario-term {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--rust);
+    padding-top: 0.15rem;
+    letter-spacing: 0.04em;
+  }
+
+  /* NOTA DE CLASE PROPIA */
+  .nota-valentina {
+    background: var(--white);
+    border-left: 3px solid var(--rust);
+    padding: 0.7rem 1rem;
+    margin: 0.9rem 0 1.1rem;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--sepia);
+  }
+  .nota-valentina::before {
+    content: "✏ Mis apuntes:";
+    font-style: normal;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    display: block;
+    color: var(--rust);
+    margin-bottom: 0.25rem;
+  }
+
+  footer {
+    margin-top: 3.5rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1rem;
+    font-family: 'Space Mono', monospace;
+    font-size: 0.58rem;
+    color: var(--sepia);
+    letter-spacing: 0.12em;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="curso">Filosofía · Fenomenología — Meditaciones Cartesianas (Husserl)</div>
+    <h1>Fenomenología — <em>Meditaciones Cartesianas</em></h1>
+    <div class="subtitulo">Apuntes de clase ordenados y expandidos — Introducción al pensamiento + §§ 1–19</div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════
+       CLASE 1 — INTRODUCCIÓN AL PENSAMIENTO DE HUSSERL
+       Fuente: apuntes de Valentina, clase del 7 de abril
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>Clase 1 — Introducción al pensamiento de Husserl</h2>
+
+    <h3>Contexto: Husserl y sus herederos</h3>
+
+    <div class="nota-valentina">
+      Husserl se decepcionó cuando creyó que Heidegger (el mejor alumno) no lo entendió. Los seguidores de Husserl eventualmente dejaron de leerlo y pasaron a Heidegger. Merleau-Ponty combina a ambos.
+    </div>
+
+    <div class="nota-valentina">
+      Husserl y Merleau-Ponty son fenomenología estática y genética (intersubjetividad) — "el nosotros".
+    </div>
+
+    <p>Esta nota apunta a una distinción central dentro de la tradición fenomenológica. Pero cuidado: no es que Husserl sea <em>solo</em> estático y Merleau-Ponty <em>solo</em> genético — la distinción es más fina.</p>
+
+    <div class="concepto">
+      <span class="concepto-label">Fenomenología estática vs. genética — distinción clave</span>
+      <p><strong>Fenomenología estática</strong> (orientación predominante de las <em>Meditaciones Cartesianas</em>): describe las <em>estructuras invariantes</em> de la conciencia — los tipos de actos, la correlación noético-noemática, las esencias. Se pregunta <em>qué</em> estructuras hay y cómo se articulan, sin preguntar todavía cómo llegaron a constituirse. Es una descripción eidética: busca las esencias, no la historia.</p>
+      <p><strong>Fenomenología genética</strong> (Husserl tardío — manuscritos, <em>La crisis</em> — y luego Merleau-Ponty): rastrea cómo esas estructuras se <em>constituyen</em> en el tiempo vivido, en la pasividad, en el cuerpo, en la interacción con otros. No solo describe lo que hay sino <em>cómo llegó a ser</em>. El ego concreto, la temporalidad viva y la pasividad son su terreno.</p>
+      <p><strong>Matiz importante:</strong> la distinción es interna al propio Husserl — él mismo desarrolló fenomenología genética, especialmente en sus últimas décadas. Lo que la profe señala es que las <em>Meditaciones Cartesianas</em> representan el polo más <em>estático</em> de su pensamiento, y que los fenomenólogos posteriores (incluyendo Merleau-Ponty) radicalizan el polo genético. De hecho la profe dijo en clase: <em>"Los fenomenólogos posteriores van a empujar mucho más lo genético, y por eso regresan al ego concreto, al tiempo y a la pasividad."</em> Y también: <em>"No termina de irse del todo al ámbito genético, porque siempre hay que moverse entre lo eidético y lo genético."</em></p>
+      <p style="margin:0"><strong>Merleau-Ponty</strong> combina a Husserl con Heidegger y radicaliza la dimensión genética: para él, la conciencia no es un ego trascendental puro sino un <em>sujeto encarnado</em> — el cuerpo propio (<em>Leib</em>) es el origen de toda experiencia. Eso lo lleva más directamente a la intersubjetividad vivida: "el nosotros" no se deduce desde un ego solitario sino que es primordial.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Conexión con §51</span>
+      <p style="margin:0">La tensión estática/genética atraviesa todo el curso y desemboca en el §51. En las <em>Meditaciones</em>, Husserl intenta llegar a la intersubjetividad desde la fenomenología estática: partiendo de la esfera de propiedad del ego trascendental, mostrando cómo se constituye el alter ego por apresentación. Los fenomenólogos genéticos (Merleau-Ponty) dirán que eso es insuficiente — que "el nosotros" viene antes que el yo solitario. La expo del §51 vive en esa tensión.</p>
+    </div>
+
+    <h3>El concepto de ciencia en Husserl</h3>
+    <p>Husserl quiere hacer filosofía como <em>ciencia rigurosa</em>, pero entiende "ciencia" en un sentido radicalmente distinto al de las ciencias naturales. La distinción es fundamental para entender por qué necesita la reducción fenomenológica.</p>
+
+    <!-- SVG: Ciencia de los fundamentos vs Ciencias objetivas -->
+    <div class="svg-label">Diagrama · Ciencia (Husserl) — dos modos (apuntes clase 1)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 680 310" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="680" height="310" fill="#fdfaf4" rx="3"/>
+
+        <!-- título superior: Ciencia (Husserl) -->
+        <text x="340" y="28" text-anchor="middle" font-size="13" fill="#1a1510" font-weight="bold" font-family="Georgia, serif">Ciencia</text>
+        <text x="340" y="44" text-anchor="middle" font-size="10" fill="#6b5a3e" font-family="'Space Mono', monospace" letter-spacing="2">(HUSSERL)</text>
+
+        <!-- flecha hacia abajo que se bifurca -->
+        <line x1="340" y1="50" x2="340" y2="72" stroke="#c9973a" stroke-width="2"/>
+        <line x1="340" y1="72" x2="155" y2="72" stroke="#c9973a" stroke-width="2"/>
+        <line x1="340" y1="72" x2="525" y2="72" stroke="#d4cbbf" stroke-width="2"/>
+        <line x1="155" y1="72" x2="155" y2="88" stroke="#c9973a" stroke-width="2" marker-end="url(#arrInt)"/>
+        <line x1="525" y1="72" x2="525" y2="88" stroke="#d4cbbf" stroke-width="2" marker-end="url(#arrGris)"/>
+
+        <!-- ≠ central -->
+        <text x="340" y="175" text-anchor="middle" font-size="26" fill="#d4cbbf">≠</text>
+
+        <!-- CAJA IZQUIERDA: Ciencia de los fundamentos -->
+        <rect x="20" y="88" width="295" height="196" rx="3" fill="#ede8dc" stroke="#c9973a" stroke-width="1.8"/>
+        <rect x="20" y="88" width="295" height="32" rx="3" fill="#c9973a"/>
+        <text x="167" y="108" text-anchor="middle" font-size="11" fill="#fdfaf4" font-weight="bold" font-family="'Space Mono', monospace" letter-spacing="1">CIENCIA DE LOS FUNDAMENTOS</text>
+
+        <text x="40" y="138" font-size="10.5" fill="#1a1510">— Inspirada en la "episteme" griega</text>
+        <text x="40" y="156" font-size="10.5" fill="#1a1510">— Ciencia <tspan font-style="italic">primera y última</tspan></text>
+        <text x="40" y="174" font-size="10.5" fill="#1a1510">— Se autofunda</text>
+        <text x="40" y="192" font-size="10.5" fill="#1a1510">— Comprende (saca a la luz) el sentido</text>
+        <text x="40" y="206" font-size="10.5" fill="#6b5a3e" font-style="italic">   y luego explica</text>
+        <text x="40" y="224" font-size="10.5" fill="#1a1510">— Pregunta: ¿condición de posibilidad</text>
+        <text x="40" y="238" font-size="10.5" fill="#6b5a3e" font-style="italic">   para que se dé...?</text>
+        <text x="40" y="258" font-size="10" fill="#8b3a2a">→ Pone los cimientos ónticos</text>
+        <text x="40" y="272" font-size="10" fill="#8b3a2a">   "entre paréntesis"</text>
+
+        <!-- CAJA DERECHA: Ciencias objetivas -->
+        <rect x="365" y="88" width="295" height="196" rx="3" fill="#f5f0e8" stroke="#d4cbbf" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <rect x="365" y="88" width="295" height="32" rx="3" fill="#6b5a3e"/>
+        <text x="512" y="108" text-anchor="middle" font-size="11" fill="#fdfaf4" font-weight="bold" font-family="'Space Mono', monospace" letter-spacing="1">CIENCIAS OBJETIVAS (ÓNTICAS)</text>
+
+        <text x="385" y="138" font-size="10.5" fill="#6b5a3e">— Hay un objeto y ese objeto se da,</text>
+        <text x="385" y="153" font-size="10.5" fill="#6b5a3e" font-style="italic">   pero nunca preguntan por cómo se da</text>
+        <text x="385" y="174" font-size="10.5" fill="#6b5a3e">— Explican las cosas de manera óntica</text>
+        <text x="385" y="195" font-size="10.5" fill="#6b5a3e">— Toman por hecho que conciencia</text>
+        <text x="385" y="209" font-size="10.5" fill="#6b5a3e" font-style="italic">   y mundo son cosas separadas</text>
+        <text x="385" y="238" font-size="10" fill="#8b3a2a">→ No ejecutan la reducción;</text>
+        <text x="385" y="252" font-size="10" fill="#8b3a2a">   operan en la actitud natural</text>
+
+        <defs>
+          <marker id="arrInt" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#c9973a"/>
+          </marker>
+          <marker id="arrGris" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#d4cbbf"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <h3>Neutralización trascendental — primer contacto con la epoché</h3>
+
+    <div class="nota-valentina">
+      Neutralización trascendental: reducción ("épojé") — para antes de leer Husserl. Conciencia: una función-fuente a partir de la cual se da sentido a las cosas del mundo.
+    </div>
+
+    <p>La <span class="t">epoché</span> o <strong>neutralización trascendental</strong> es la operación metodológica central de Husserl: suspender la "actitud natural" — la creencia tácita, irreflexiva, de que el mundo existe ahí afuera independientemente de mí. No es una duda ni una negación: es una <em>suspensión</em> que nos permite ver la conciencia como <strong>función-fuente</strong> desde la cual el mundo cobra sentido.</p>
+
+    <h3>Experiencia, escorzos y síntesis temporal → el camino a la intersubjetividad</h3>
+
+    <div class="nota-valentina">
+      Todo lo percibido es a partir de actos intencionales. La apariencia siempre se da por escorzos. La vivencia es una síntesis temporal. Las cosas no tienen una existencia única sino que se están dando siempre en el tiempo. No salimos del tiempo, somos el tiempo (en nuestros movimientos lo practicamos).
+    </div>
+
+    <p>Tres ideas encadenadas que la profe introduce como hilo conductor del curso:</p>
+    <ul>
+      <li>Toda experiencia se da a través de <strong>actos intencionales</strong> — no hay percepción sin un acto que dirija la conciencia hacia algo.</li>
+      <li>Esos actos dan el objeto siempre por <strong>escorzos</strong> (<span class="t">Abschattungen</span>): perspectivas parciales que la conciencia sintetiza.</li>
+      <li>La <strong>vivencia es una síntesis temporal</strong>: no salimos del tiempo, lo <em>somos</em>. La experiencia tiene estructura de flujo (retención–ahora–protención).</li>
+    </ul>
+
+    <div class="nota-valentina">
+      Por eso el conocimiento tiene que ser intersubjetivo — llegar a la validez de las cosas subjetivo y trascendental supone comunidad.
+    </div>
+
+    <p>Esta última idea es el arco de todo el curso: si la experiencia es siempre perspectival y temporal, la <em>validez objetiva</em> del conocimiento no puede fundarse en un ego solitario. Necesita <strong>intersubjetividad</strong> — una comunidad de conciencias que co-constituyen el mundo. Eso es exactamente lo que Husserl trabaja en la Quinta meditación, en el §51.</p>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       CLASE 9 ABR — INTRODUCCIÓN + PRIMERA MEDITACIÓN §§1–4
+       Fuente: reconstrucción desde el texto (Husserl §§1–4)
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>Clase 9 abr — Introducción y Primera meditación: §§ 1–4</h2>
+
+    <div class="concepto">
+      <span class="concepto-label">⚠ Reconstrucción desde el texto</span>
+      <p style="margin:0">Valentina no asistió a esta clase. Contenido reconstruido fielmente de §§1–4 de Husserl (Introducción + inicio Primera meditación), siguiendo el estilo de la profe. No son apuntes de clase — es reconstrucción del texto para el control de lectura del 30 abr.</p>
+    </div>
+
+    <h3>§ 1 — Las <em>Meditaciones</em> de Descartes como prototipo de la autorreflexión filosófica</h3>
+
+    <p>Husserl abre el texto señalando que fue Descartes quien dio a la fenomenología sus impulsos más decisivos. Las <em>Meditationes de prima philosophia</em> representan el prototipo de una filosofía que parte de cero para fundar una ciencia universal sobre bases absolutas.</p>
+
+    <div class="concepto">
+      <span class="concepto-label">El gesto fundacional del meditador solitario</span>
+      <p>Descartes introduce un gesto filosófico que Husserl considera de valor eterno: el filósofo que, <em>una vez en la vida</em>, decide derrumbar dentro de sí todas las ciencias admitidas hasta entonces y reconstruirlas. La filosofía es incumbencia absolutamente personal — debe desarrollarse como la sabiduría propia del que filosofa, tendente a lo universal.</p>
+      <p style="margin:0">El método: el meditador ejecuta una crítica metódica de todo lo que es cierto en la vida natural, excluyendo lo que deja abiertas posibilidades de duda. Resultado: la certeza de la existencia del mundo no resiste la crítica; solo el <span class="t">ego</span> puro de sus cogitationes permanece absolutamente indudable. Desde él, Descartes intenta inferir la existencia de Dios y, por Dios, la de la naturaleza objetiva.</p>
+    </div>
+
+    <h3>§ 2 — Necesidad de un nuevo comienzo radical de la filosofía</h3>
+
+    <p>Husserl constata que las ciencias positivas, que debían haber recibido en Descartes una fundamentación racional absoluta, se han preocupado muy poco de sus <em>Meditaciones</em>. La filosofía actual está disgregada: muchas filosofías sin comunicación real, sin estudio recíproco serio.</p>
+
+    <div class="nota-profe">
+      En nuestro desventurado presente, ¿no nos hallamos en una situación semejante a aquella en que se encontró Descartes en su juventud? El único renacimiento fecundo sería volver a dar vida a las Meditaciones cartesianas — no para adoptarlas, sino para descubrir el más profundo sentido de su radicalismo al ego cogito.
+    </div>
+
+    <p>La decisión fundamental: comenzar en la <strong>absoluta pobreza de conocimientos</strong> — sin presuponer ninguna ciencia dada, ni siquiera la lógica, que también ha perdido vigencia en la destrucción universal.</p>
+
+    <div class="svg-label">Diagrama · Husserl retoma a Descartes — misma meta, camino corregido (§§1–2)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 640 158" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="640" height="158" fill="#fdfaf4" rx="3"/>
+        <rect x="18" y="30" width="165" height="98" rx="2" fill="#ede8dc" stroke="#d4cbbf" stroke-width="1.5"/>
+        <text x="100" y="62" text-anchor="middle" font-size="12" fill="#1a1510" font-weight="bold">Descartes</text>
+        <text x="100" y="80" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">ego cogito como base ✓</text>
+        <text x="100" y="96" text-anchor="middle" font-size="9.5" fill="#8b3a2a">substantia cogitans ✗</text>
+        <text x="100" y="112" text-anchor="middle" font-size="9.5" fill="#8b3a2a">ideal matemático ✗</text>
+        <line x1="185" y1="79" x2="228" y2="79" stroke="#c9973a" stroke-width="1.5" marker-end="url(#a9r)"/>
+        <rect x="230" y="24" width="172" height="110" rx="2" fill="#fdfaf4" stroke="#c9973a" stroke-width="1.8"/>
+        <text x="316" y="52" text-anchor="middle" font-size="12" fill="#1a1510" font-weight="bold">Husserl retoma</text>
+        <text x="316" y="70" text-anchor="middle" font-size="9.5" fill="#6b5a3e">meditaciones radicales ✓</text>
+        <text x="316" y="86" text-anchor="middle" font-size="9.5" fill="#6b5a3e">ciencia sin presupuestos ✓</text>
+        <text x="316" y="102" text-anchor="middle" font-size="9.5" fill="#6b5a3e">pobreza de conocimiento ✓</text>
+        <text x="316" y="120" text-anchor="middle" font-size="9" fill="#8b3a2a">corrige errores cartesianos</text>
+        <line x1="404" y1="79" x2="444" y2="79" stroke="#d4cbbf" stroke-width="1.2" marker-end="url(#a9g)"/>
+        <rect x="446" y="30" width="172" height="98" rx="2" fill="#1a1510"/>
+        <text x="532" y="64" text-anchor="middle" font-size="12" fill="#f5f0e8" font-weight="bold">Fenomenología</text>
+        <text x="532" y="80" text-anchor="middle" font-size="9.5" fill="#c9973a">trascendental</text>
+        <text x="532" y="98" text-anchor="middle" font-size="9" fill="#f5f0e8" font-style="italic">ciencia de fundamentación</text>
+        <text x="532" y="112" text-anchor="middle" font-size="9" fill="#f5f0e8" font-style="italic">absoluta y universal</text>
+        <defs>
+          <marker id="a9r" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#c9973a"/></marker>
+          <marker id="a9g" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#d4cbbf"/></marker>
+        </defs>
+      </svg>
+    </div>
+
+    <h3>Primera meditación — El camino hacia el ego trascendental</h3>
+
+    <h3>§ 3 — La revolución cartesiana y la idea-fin de una fundamentación absoluta</h3>
+
+    <p>Husserl comienza la Primera meditación reafirmando la <strong>idea-fin</strong>: una ciencia de fundamentación absoluta. Pero esa idea la tomamos en forma meramente hipotética, como guía provisional — no podemos presuponer ningún ideal de ciencia dado de antemano. La diferencia clave con Descartes: él tenía de antemano el ideal de la matemática como ciencia deductiva a partir de axiomas. Husserl rechaza ese prejuicio.</p>
+
+    <div class="nota-profe">
+      Como principiantes no tenemos aún en vigencia ningún ideal normativo de ciencia; y sólo podremos tenerlo en la medida en que volvamos a crearlo. Tomaremos la idea-fin como una presunción provisional a la que nos entregamos por vía de ensayo.
+    </div>
+
+    <h3>§ 4 — El sentido final de la ciencia como fenómeno noemático — la Evidencia</h3>
+
+    <p>Para aclarar la idea de ciencia auténtica, Husserl propone <em>vivirla</em> desde adentro: ahondar en la tendencia científica para ver qué busca realmente. Dos resultados centrales:</p>
+    <p><strong>1. Juicios fundamentados.</strong> La ciencia exige ir de juicios meramente presuntivos a juicios fundamentados. Husserl distingue <strong>juicios inmediatos</strong> (su verdad está dada directamente en evidencia) de <strong>juicios mediatos</strong> (su verdad remite a otros juicios).</p>
+
+    <div class="concepto">
+      <span class="concepto-label">La evidencia — primer contacto (§4)</span>
+      <p>La <strong>evidencia</strong> es el paso del mero mentar la cosa a tenerla presente <em>ella misma</em>. En la evidencia, a diferencia del mero mentar lejano a las cosas, está presente la cosa como <em>ella misma</em> — el objeto lógico en sí mismo. El juicio se muestra como correcto, concordante con su correlato.</p>
+      <p style="margin:0">El <strong>conocimiento</strong> es esa adquisición permanente: la posibilidad de retornar libremente a la fundamentación, de repetir la verdad como una y la misma en actos distintos. Eso le dará su validez intersubjetiva eventual.</p>
+    </div>
+
+    <p><strong>2. Expresión adecuada.</strong> La ciencia exige también que las verdades queden expresadas adecuadamente en lenguaje. El lenguaje común es fluido y ambiguo; hay que refundar las significaciones desde las evidencias adquiridas científicamente.</p>
+
+    <div class="concepto">
+      <span class="concepto-label">Conexión con §51</span>
+      <p style="margin:0">La evidencia que aquí se introduce como fundamento de la ciencia tendrá que afrontar el problema de los otros egos. ¿Puedo tener evidencia del alter ego? En el §51, la respuesta de Husserl es que la experiencia del otro no es una evidencia directa sino una <em>apresentación</em> (<span class="t">Appräsentation</span>) — un tipo sui generis de acceso mediado. La pregunta por la evidencia intersubjetiva cierra el proyecto fenomenológico.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       CLASE 14 ABR — PRIMERA MEDITACIÓN §§5–9
+       Fuente: reconstrucción desde el texto (Husserl §§5–9)
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>Clase 14 abr — Primera meditación: §§ 5–9</h2>
+
+    <div class="concepto">
+      <span class="concepto-label">⚠ Reconstrucción desde el texto</span>
+      <p style="margin:0">Valentina no asistió a esta clase. Contenido reconstruido fielmente de §§5–9 de Husserl (Primera meditación). No son apuntes de clase — es reconstrucción del texto para el control de lectura del 30 abr.</p>
+    </div>
+
+    <h3>§§ 5–6 — La evidencia y sus tipos: adecuada vs. apodíctica</h3>
+
+    <p>La evidencia, en sentido amplio, es una <em>experiencia</em> de algo que es y que es de tal manera — un verlo en sí mismo con la mirada del espíritu. Puede ser más o menos perfecta; hay dos tipos de perfección que debemos distinguir con precisión:</p>
+
+    <div class="concepto">
+      <span class="concepto-label">§5-6 — Dos tipos de perfección de la evidencia</span>
+      <p><strong>Evidencia adecuada:</strong> la cosa está completamente presente, sin co-menciones vacías ni horizontes presuntivos no plenificados. El ideal: el objeto dado exhaustivamente, sin ningún aspecto meramente presumido. Husserl sugiere que quizá este ideal no puede realizarse plenamente en principio.</p>
+      <p><strong>Evidencia apodíctica:</strong> no es cuestión de completud sino de indubitabilidad. Descubre, mediante reflexión crítica sobre lo que efectúa la evidencia, la <em>impensabilidad absoluta del no-ser</em> de lo evidente. Excluye de antemano toda duda imaginable — no solo de hecho, sino de derecho.</p>
+      <p style="margin:0"><em>Clave:</em> adecuación y apodicticidad no van necesariamente juntas. El ego trascendental es apodíctico pero inadecuado — ese caso aparece en el §9.</p>
+    </div>
+
+    <div class="svg-label">Diagrama · Tipos de perfección de la evidencia (§§5–6)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 620 196" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="620" height="196" fill="#fdfaf4" rx="3"/>
+        <text x="310" y="22" text-anchor="middle" font-size="10" fill="#6b5a3e" font-family="'Space Mono', monospace" letter-spacing="2">PERFECCIÓN DE LA EVIDENCIA</text>
+        <rect x="18" y="30" width="275" height="152" rx="3" fill="#ede8dc" stroke="#c9973a" stroke-width="1.5"/>
+        <rect x="18" y="30" width="275" height="28" rx="3" fill="#c9973a"/>
+        <text x="155" y="49" text-anchor="middle" font-size="10" fill="#fdfaf4" font-family="'Space Mono', monospace" font-weight="bold">EVIDENCIA ADECUADA</text>
+        <text x="34" y="74" font-size="10" fill="#1a1510">— Cosa presente sin co-menciones vacías</text>
+        <text x="34" y="90" font-size="10" fill="#1a1510">— Ningún horizonte presuntivo abierto</text>
+        <text x="34" y="110" font-size="10" fill="#6b5a3e">— Perfección por completud del objeto</text>
+        <text x="34" y="126" font-size="10" fill="#6b5a3e">— Ideal regulativo de la ciencia</text>
+        <text x="34" y="150" font-size="9.5" fill="#8b3a2a" font-style="italic">→ Quizás inalcanzable en principio</text>
+        <text x="34" y="166" font-size="9.5" fill="#8b3a2a" font-style="italic">   (Husserl deja la cuestión abierta)</text>
+        <rect x="327" y="30" width="275" height="152" rx="3" fill="#f5f0e8" stroke="#1a1510" stroke-width="1.8"/>
+        <rect x="327" y="30" width="275" height="28" rx="3" fill="#1a1510"/>
+        <text x="464" y="49" text-anchor="middle" font-size="10" fill="#c9973a" font-family="'Space Mono', monospace" font-weight="bold">EVIDENCIA APODÍCTICA</text>
+        <text x="343" y="74" font-size="10" fill="#1a1510">— Indubitabilidad absoluta</text>
+        <text x="343" y="90" font-size="10" fill="#1a1510">— Impensabilidad del no-ser</text>
+        <text x="343" y="110" font-size="10" fill="#6b5a3e">— Excluye toda duda de derecho</text>
+        <text x="343" y="126" font-size="10" fill="#6b5a3e">— Requerida para los principios</text>
+        <text x="343" y="150" font-size="9.5" fill="#8b3a2a" font-style="italic">→ Puede ser inadecuada</text>
+        <text x="343" y="166" font-size="9.5" fill="#8b3a2a" font-style="italic">   (el ego es apod. pero no adecuado)</text>
+      </svg>
+    </div>
+
+    <h3>§ 7 — La existencia del mundo no es apodíctica</h3>
+
+    <p>La candidata más obvia para evidencia primera es la existencia del mundo. Husserl muestra que esta evidencia no tiene carácter apodíctico: incluso el conjunto entero de la experiencia puede revelarse como ilusión bajo el título de un <em>sueño coherente</em>. Basta esto para mostrar que la existencia del mundo requiere una previa crítica de su validez — no puede admitirse sin examen como inmediatamente apodíctica.</p>
+
+    <p>El ser del mundo ya no puede ser para nosotros un hecho comprensible de suyo sino solo un <strong>fenómeno de validez</strong> (<span class="t">Geltungsphänomen</span>). Consecuencia: hay que despojar de su validez ingenua no solo las ciencias sino la base universal en que todas ellas reposan: el mundo de la experiencia.</p>
+
+    <h3>§ 8 — El <em>ego cogito</em> como subjetividad trascendental</h3>
+
+    <p>Si la existencia del mundo no es apodíctica, ¿qué queda? El gran giro: la vuelta hacia el <span class="t">ego cogito</span> como base apodícticamente cierta.</p>
+
+    <div class="nota-profe">
+      Este universal poner fuera de validez — esta épojé fenomenológica — no nos enfrenta con una pura nada. Lo que yo, el que medita, me apropio por tal medio es mi propia vida pura con todas sus vivencias puras — el universo de los fenómenos en el sentido de la fenomenología. La épojé es el método radical y universal por el cual yo me capto como yo y con mi propia vida pura de conciencia.
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">La epoché — lo que queda y lo que se modifica</span>
+      <p>La epoché <em>no niega ni destruye el mundo</em>: lo convierte en fenómeno. Todo ser mundanal vale para mí precisamente por el hecho de que yo lo experimento, percibo, recuerdo, pienso, juzgo, valoro, deseo. Descartes designa todo esto con el término <span class="t">cogito</span>.</p>
+      <p>Lo que queda tras la epoché: el ego puro (<strong>ego trascendental</strong>) con la corriente pura de sus cogitationes. El ser del ego puro precede en el orden del conocimiento a todo ser objetivo. Este método de reconducta se llama <strong>reducción fenomenológica trascendental</strong>.</p>
+      <p style="margin:0">El mundo y los otros "yos" ya no tienen para mí existencia sin más — son fenómenos de ser. Pero ese fenómeno no es una pura nada: es precisamente aquello que posibilita toda decisión crítica sobre el ser o la mera apariencia.</p>
+    </div>
+
+    <h3>§ 9 — Alcance de la evidencia apodíctica del "yo soy"</h3>
+
+    <p>El <em>ego sum</em> / <em>ego cogitans</em> es apodíctico: su ser es indubitablemente cierto — incluso un "yo dudo" presupondría ya el "yo soy". Pero Husserl introduce un matiz crucial:</p>
+
+    <div class="concepto">
+      <span class="concepto-label">Apodicticidad con horizonte presuntivo</span>
+      <p>La certeza apodíctica concierne al <em>yo soy</em> trascendental con la indeterminada generalidad de un horizonte abierto. El núcleo absolutamente cierto es el <strong>presente viviente</strong> del ego. Más allá de ese núcleo:</p>
+      <ul>
+        <li>El pasado del ego (accesible solo por el recuerdo): ¿puede el recuerdo pretender evidencia apodíctica?</li>
+        <li>Las facultades habituales y propiedades del ego: solo presuntivamente dadas.</li>
+        <li>La percepción externa: la cosa misma está ahí, pero con horizonte abierto e indeterminado.</li>
+      </ul>
+      <p style="margin:0">El ego es apodíctico en su existencia pero <em>inadecuado</em> en su determinación. Fundamos la filosofía sobre una base apodíctica cuyo contenido debe ser desplegado gradualmente — ese es el programa de las meditaciones restantes.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       CLASE 16 ABR — §§10–12
+       Fuente: reconstrucción desde el texto (Husserl §§10–12)
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>Clase 16 abr — Primera y Segunda meditación: §§ 10–12</h2>
+
+    <div class="concepto">
+      <span class="concepto-label">⚠ Reconstrucción desde el texto</span>
+      <p style="margin:0">Valentina no asistió a esta clase. Contenido reconstruido fielmente de §§10–12 de Husserl. No son apuntes de clase — es reconstrucción del texto para el control de lectura del 30 abr.</p>
+    </div>
+
+    <h3>§§ 10–11 — El error de Descartes y la distinción yo psicológico / yo trascendental</h3>
+
+    <div class="nota-profe">
+      §10 es una digresión crítica. Parece muy fácil, siguiendo a Descartes, captar el yo puro y sus cogitationes. Y sin embargo es como si estuviéramos sobre un escarpado peñasco, donde la marcha con calma y seguridad decide sobre la vida o la muerte filosóficas.
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">§10 — El doble error de Descartes</span>
+      <p><strong>Error 1 — el ideal matemático de ciencia:</strong> Descartes tomó el <em>ego cogito</em> como axioma apodíctico del cual, junto a principios innatos, pudiera derivarse deductivamente todo un sistema del mundo (<em>ordine geometrico</em>). El ego trascendental no es una premisa axiomática — es un campo abierto de experiencia y descripción.</p>
+      <p><strong>Error 2 — el ego como sustancia:</strong> Descartes convierte el ego en <em>mens sive animus</em> — sustancia pensante separada. Con ello recae en el mundo: el ego se convierte en un "trocito del mundo salvado", punto de partida para inferir causalmente el resto. Husserl llama a Descartes "el padre del absurdo realismo trascendental".</p>
+      <p style="margin:0"><strong>La regla husserliana:</strong> en el campo del cogito, no enunciamos nada más que lo que nos ha sido dado efectivamente y de modo por entero inmediato en la epoché; si no lo vemos nosotros mismos, no lo enunciamos.</p>
+    </div>
+
+    <div class="svg-label">Diagrama · Yo psicológico vs. yo trascendental (§11)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 640 215" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="640" height="215" fill="#fdfaf4" rx="3"/>
+        <text x="320" y="22" text-anchor="middle" font-size="10" fill="#6b5a3e" font-family="'Space Mono', monospace" letter-spacing="2">DOS MODOS DE CAPTARME A MÍ MISMO</text>
+        <rect x="18" y="32" width="276" height="170" rx="3" fill="#ede8dc" stroke="#d4cbbf" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <rect x="18" y="32" width="276" height="28" rx="3" fill="#6b5a3e"/>
+        <text x="156" y="51" text-anchor="middle" font-size="9.5" fill="#fdfaf4" font-family="'Space Mono', monospace">YO PSICOLÓGICO (EMPÍRICO)</text>
+        <text x="34" y="76" font-size="10" fill="#1a1510">— Yo en cuanto hombre en el mundo</text>
+        <text x="34" y="92" font-size="10" fill="#6b5a3e">— Objeto de biología, antropología,</text>
+        <text x="34" y="106" font-size="10" fill="#6b5a3e">   psicología</text>
+        <text x="34" y="122" font-size="10" fill="#6b5a3e">— Vida psíquica en el mundo natural</text>
+        <text x="34" y="142" font-size="9.5" fill="#8b3a2a" font-style="italic">→ Captado en la actitud natural</text>
+        <text x="34" y="156" font-size="9.5" fill="#8b3a2a" font-style="italic">   sin reducción</text>
+        <text x="34" y="176" font-size="9" fill="#6b5a3e" font-style="italic">Donde se quedó Descartes (mens sive animus)</text>
+        <text x="310" y="120" text-anchor="middle" font-size="10" fill="#c9973a" font-family="'Space Mono', monospace">epoché</text>
+        <line x1="308" y1="32" x2="308" y2="202" stroke="#c9973a" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <rect x="346" y="32" width="276" height="170" rx="3" fill="#f5f0e8" stroke="#8b3a2a" stroke-width="1.8"/>
+        <rect x="346" y="32" width="276" height="28" rx="3" fill="#1a1510"/>
+        <text x="484" y="51" text-anchor="middle" font-size="9.5" fill="#c9973a" font-family="'Space Mono', monospace">YO TRASCENDENTAL</text>
+        <text x="362" y="76" font-size="10" fill="#1a1510">— No un trozo del mundo</text>
+        <text x="362" y="92" font-size="10" fill="#1a1510">— El mundo "existe" para mí en cuanto</text>
+        <text x="362" y="106" font-size="10" fill="#1a1510">   consciente en mi cogito</text>
+        <text x="362" y="122" font-size="10" fill="#6b5a3e">— Condición de posibilidad del mundo</text>
+        <text x="362" y="138" font-size="10" fill="#6b5a3e">   y de todo conocimiento objetivo</text>
+        <text x="362" y="156" font-size="9.5" fill="#8b3a2a" font-style="italic">→ Captado solo tras la epoché</text>
+        <text x="362" y="176" font-size="9" fill="#c9973a" font-style="italic">Husserl supera aquí a Descartes</text>
+      </svg>
+    </div>
+
+    <div class="nota-profe">
+      Por la épojé fenomenológica yo reduzco mi yo natural humano y mi vida psíquica a mi yo fenomenológico-trascendental. El mundo objetivo extrae todo su sentido y su validez de ser de mí mismo, de mí en cuanto yo trascendental.
+    </div>
+
+    <p>El mundo tiene respecto al ego una <strong>trascendencia de inclusión irreal</strong> (<em>irrealer Beschlossenseins</em>): el mundo y sus objetos no son trozos <em>reell</em> de mi conciencia — no son componentes reales de ella. Y sin embargo, todo su sentido les viene de mis actos: experimentar, representar, pensar, valorar. Esta es la estructura fundamental de la <em>trascendencia fenomenológica</em>.</p>
+
+    <h3>Segunda meditación — Descubrimiento del campo trascendental según sus estructuras universales</h3>
+
+    <h3>§ 12 — La idea de una fundamentación trascendental del conocimiento</h3>
+
+    <div class="nota-profe">
+      ¿Qué puedo hacer yo de filósofo con el ego trascendental? Su ser precede para mí, en el orden del conocimiento, a todo ser objetivo; en cierto sentido es el fundamento y la base en que tiene lugar todo conocimiento objetivo.
+    </div>
+
+    <p>El ego trascendental no es una premisa axiomática para inferencias — eso sería repetir el error de Descartes. En cambio, el descubrimiento del ego abre una <em>nueva idea de fundamentación del conocimiento</em>: la fundamentación trascendental.</p>
+
+    <div class="concepto">
+      <span class="concepto-label">§12 — El ego como campo infinito de experiencia</span>
+      <p>La epoché me descubre una <em>esfera infinita del ser de una nueva clase</em>: la esfera de la experiencia trascendental. El ego no es un punto de apoyo axiomático sino un campo de trabajo abierto — un universo de vivencias, actos, síntesis, horizontes temporales.</p>
+      <p>Este campo admite una ciencia apriórica: la <strong>fenomenología</strong>. No juzga sobre realidades efectivas sino sobre posibilidades <em>a priori</em>, prescribiendo así reglas a priori a toda experiencia posible.</p>
+      <p style="margin:0">El programa que se abre aquí: describir el ego trascendental en sus estructuras universales — la intencionalidad, la temporalidad interna, la síntesis (§§13–18) — y luego ampliar esa esfera para dar cuenta de la intersubjetividad y la objetividad del mundo.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Conexión con §51</span>
+      <p style="margin:0">Si el mundo solo tiene sentido en cuanto constituido por el ego trascendental, ¿cómo doy cuenta de que hay <em>otros egos</em>? El §12 es el umbral desde el que toda la fenomenología se despliega hacia la intersubjetividad trascendental. El §51 es el clímax: el ego no está solo — la intersubjetividad monadológica es la condición de posibilidad de la objetividad del mundo.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECCIÓN 0 — ERROR DE DESCARTES / PUNTO DE PARTIDA
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>Punto de partida — El error de Descartes</h2>
+
+    <div class="nota-profe">
+      El error de Descartes es quedarse en el ego concreto y pensar que eso era el ego puro.
+    </div>
+
+    <p>Husserl parte de Descartes pero lo corrige. Descartes llega al <span class="t">cogito</span> ("pienso, luego existo") y lo toma como punto arquimédico, pero lo interpreta psicológicamente: lo trata como una sustancia pensante concreta, empírica, dentro del mundo natural.</p>
+
+    <div class="concepto">
+      <span class="concepto-label">Distinción clave</span>
+      <p><strong>Yo-persona / ego empírico:</strong> el yo situado, con historia, cuerpo, hábitos y circunstancias. Es la persona particular que vive en la actitud natural.</p>
+      <p><strong>Ego puro / ego trascendental:</strong> lo que queda después de la reducción fenomenológica (<span class="t">epoché</span>). No es una persona particular, sino la <em>estructura de una conciencia única y universal</em> que hace posible cualquier experiencia.</p>
+      <p style="margin:0"><strong>Matiz importante para lo que sigue:</strong> más adelante la profe llama <em>ego sí mismo</em> o <em>ego mónada</em> al ego trascendental en su concreción. No hay que confundirlo con el yo-persona empírico. Descartes confunde justamente esos planos.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECCIÓN 1 — §13
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>§ 13 — Necesidad de excluir los problemas del alcance del conocimiento trascendental</h2>
+
+    <p>En este parágrafo Husserl traza la arquitectura completa del programa fenomenológico: dónde empieza, hacia dónde se desarrolla y qué problemas quedan temporalmente suspendidos.</p>
+
+    <!-- SVG §13: mapa del programa fenomenológico -->
+    <div class="svg-label">Diagrama · Programa de la fenomenología trascendental (§13)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 680 340" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="680" height="340" fill="#fdfaf4" rx="3"/>
+        <!-- título -->
+        <text x="340" y="28" text-anchor="middle" font-size="11" fill="#6b5a3e" font-family="'Space Mono', monospace" letter-spacing="2">FENOMENOLOGÍA TRASCENDENTAL</text>
+        <line x1="60" y1="35" x2="620" y2="35" stroke="#d4cbbf" stroke-width="1"/>
+
+        <!-- columna izquierda: punto de partida -->
+        <rect x="30" y="55" width="160" height="70" rx="2" fill="#ede8dc" stroke="#c9973a" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <text x="110" y="78" text-anchor="middle" font-size="12" fill="#1a1510" font-weight="bold">Experiencia</text>
+        <text x="110" y="94" text-anchor="middle" font-size="12" fill="#1a1510" font-weight="bold">trascendental</text>
+        <text x="110" y="112" text-anchor="middle" font-size="10" fill="#6b5a3e" font-style="italic">Observar y describir</text>
+
+        <rect x="30" y="145" width="160" height="55" rx="2" fill="#fdfaf4" stroke="#d4cbbf" stroke-width="1"/>
+        <text x="110" y="167" text-anchor="middle" font-size="11" fill="#1a1510">Conocimiento</text>
+        <text x="110" y="183" text-anchor="middle" font-size="11" fill="#1a1510">trascendental</text>
+        <text x="110" y="199" text-anchor="middle" font-size="9.5" fill="#8b3a2a" font-style="italic">¿es real o no?</text>
+
+        <!-- flecha izq → centro -->
+        <line x1="192" y1="90" x2="248" y2="90" stroke="#c9973a" stroke-width="1.5" marker-end="url(#arr)"/>
+        <line x1="192" y1="172" x2="248" y2="172" stroke="#d4cbbf" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrg)"/>
+
+        <!-- columna centro: desarrollo -->
+        <rect x="250" y="55" width="160" height="70" rx="2" fill="#fdfaf4" stroke="#d4cbbf" stroke-width="1"/>
+        <text x="330" y="78" text-anchor="middle" font-size="11" fill="#1a1510">Experiencia</text>
+        <text x="330" y="94" text-anchor="middle" font-size="11" fill="#1a1510">trascendental</text>
+        <text x="330" y="110" text-anchor="middle" font-size="11" fill="#1a1510">de sí mismo</text>
+
+        <rect x="250" y="145" width="160" height="42" rx="2" fill="#fdfaf4" stroke="#d4cbbf" stroke-width="1"/>
+        <text x="330" y="165" text-anchor="middle" font-size="11" fill="#6b5a3e" font-style="italic">Científico de</text>
+        <text x="330" y="181" text-anchor="middle" font-size="11" fill="#6b5a3e" font-style="italic">naturaleza</text>
+
+        <!-- flecha centro → der -->
+        <line x1="412" y1="90" x2="458" y2="90" stroke="#d4cbbf" stroke-width="1" marker-end="url(#arrg)"/>
+        <line x1="412" y1="165" x2="458" y2="165" stroke="#d4cbbf" stroke-width="1" marker-end="url(#arrg)"/>
+
+        <!-- columna derecha: crítica y consecuencias -->
+        <rect x="460" y="42" width="185" height="75" rx="2" fill="#fdfaf4" stroke="#8b3a2a" stroke-width="1.2"/>
+        <text x="552" y="62" text-anchor="middle" font-size="10.5" fill="#8b3a2a" font-weight="bold">Crítica de la experiencia</text>
+        <text x="552" y="77" text-anchor="middle" font-size="10.5" fill="#8b3a2a" font-weight="bold">trascendental y del</text>
+        <text x="552" y="92" text-anchor="middle" font-size="10.5" fill="#8b3a2a" font-weight="bold">conocimiento trascendental</text>
+        <text x="552" y="108" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">→ Ciencia subjetiva</text>
+
+        <!-- cadena de consecuencias -->
+        <line x1="552" y1="118" x2="552" y2="142" stroke="#d4cbbf" stroke-width="1" marker-end="url(#arrg)"/>
+        <rect x="460" y="143" width="185" height="42" rx="2" fill="#ede8dc" stroke="#d4cbbf" stroke-width="1"/>
+        <text x="552" y="162" text-anchor="middle" font-size="10.5" fill="#1a1510">Solipsismo</text>
+        <text x="552" y="178" text-anchor="middle" font-size="10.5" fill="#1a1510">trascendental</text>
+
+        <line x1="552" y1="186" x2="552" y2="210" stroke="#d4cbbf" stroke-width="1" marker-end="url(#arrg)"/>
+        <rect x="460" y="211" width="185" height="42" rx="2" fill="#1a1510" stroke="#1a1510"/>
+        <text x="552" y="230" text-anchor="middle" font-size="10.5" fill="#f5f0e8" font-weight="bold">Fenomenología de la</text>
+        <text x="552" y="246" text-anchor="middle" font-size="10.5" fill="#c9973a" font-weight="bold">intersubjetividad</text>
+
+        <!-- Observaciones Descartes -->
+        <line x1="340" y1="270" x2="340" y2="295" stroke="#d4cbbf" stroke-width="0.8" stroke-dasharray="4,3"/>
+        <rect x="80" y="296" width="480" height="34" rx="2" fill="#fdfaf4" stroke="#d4cbbf" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="340" y="310" text-anchor="middle" font-size="10" fill="#6b5a3e" font-style="italic">Descartes: no alcanza la epoché metódica · omite que el ego puede explicarse a sí mismo</text>
+        <text x="34" y="310" text-anchor="start" font-size="9" fill="#8b3a2a" font-family="'Space Mono', monospace">obs.</text>
+
+        <!-- marcadores flecha -->
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#c9973a"/>
+          </marker>
+          <marker id="arrg" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#d4cbbf"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <h3>Estructura del §13</h3>
+    <p><strong>Experiencia trascendental — Observar y describir:</strong> el punto de partida es la experiencia del ego desde la actitud fenomenológica (tras la reducción). Aquí simplemente observamos y describimos lo que se da a la conciencia sin presuponer la existencia del mundo.</p>
+    <p><strong>Conocimiento trascendental — ¿es real o no?:</strong> el siguiente paso pregunta si el conocimiento trascendental obtenido es válido. Esta pregunta Husserl la suspende metodológicamente por el momento, de ahí el título del parágrafo.</p>
+
+    <h3>El desarrollo de la fenomenología trascendental</h3>
+    <p>Husserl traza una progresión que va desde la experiencia del propio ego hasta el problema de los otros egos:</p>
+    <ul>
+      <li>Experiencia trascendental de sí mismo → descripción inmanente del ego (científico de naturaleza).</li>
+      <li>Crítica de esa experiencia y de ese conocimiento → ciencia subjetiva cuyo objeto es el ego trascendental.</li>
+      <li>Esto lleva al <strong>solipsismo trascendental</strong>: si parto solo de mi ego, ¿cómo doy cuenta de los otros?</li>
+      <li>Para superarlo: <strong>fenomenología de la intersubjetividad</strong> — el gran proyecto final de Husserl.</li>
+    </ul>
+
+    <div class="concepto">
+      <span class="concepto-label">Yo-persona, ego mónada y acceso al trascendental</span>
+      <p>La clase insistió en que aquí todavía puede colarse una confusión: no es lo mismo el <strong>yo-persona</strong> — el sí mismo en el mundo, con circunstancias — que el <strong>ego trascendental</strong>. El primero no es el tema filosófico en sentido estricto, pero sí es la única vía de acceso que tenemos hacia el segundo.</p>
+      <p style="margin:0">Por eso el ego que investiga debe proceder como cualquier científico: buscando en sí mismo esencias y estructuras. Así la subjetividad trascendental puede convertirse en objeto legítimo de una ciencia fenomenológica.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Solipsismo: sí, pero solo provisionalmente</span>
+      <p>La reducción deja en pie, por ahora, únicamente mi ego trascendental. En ese sentido la profe lo dijo sin rodeos: por un rato, sí, somos solipsistas.</p>
+      <p style="margin:0">Pero ese solipsismo es <strong>metodológico</strong>, no metafísico. Cada uno llega por sí mismo a su ego puro; recién después aparecerán los otros egos y la intersubjetividad trascendental como nivel superior del análisis.</p>
+    </div>
+
+    <h3>Observaciones a Descartes (§13)</h3>
+    <ul>
+      <li>No alcanza la epoché en su sentido metódico: su duda es provisional e instrumental, no una suspensión radical de la tesis de existencia del mundo.</li>
+      <li>Omite que el ego, por la experiencia trascendental, puede explicarse a sí mismo — y que eso es un posible campo de trabajo filosófico.</li>
+    </ul>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECCIÓN 2 — §14
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>§ 14 — La corriente de las cogitationes: Cogito, Cogitatum y Objetividad</h2>
+
+    <div class="pregunta">¿Qué es la objetividad para Husserl?<br>¿Qué es la subjetividad objetiva? ¿Qué es eso?</div>
+
+    <p>Para Husserl, <em>un objeto es aquello que siempre es <strong>para</strong> un sujeto</em>. No hay objeto sin correlato subjetivo que lo constituya. El objeto no preexiste independientemente; aparece como correlato de una conciencia que lo intenciona.</p>
+
+    <div class="nota-profe">
+      Un objeto es aquello que siempre es para un sujeto — procesos, entidades naturales que elabora la propia conciencia. Descartes explica eso (el objeto) psicológicamente como una experiencia natural, y ahí está su error.
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Intencionalidad — concepto central</span>
+      <p>La <strong>intencionalidad</strong> es la estructura fundamental de la conciencia: <em>toda conciencia es conciencia de algo</em>. La conciencia nunca está vacía; siempre está "dirigida hacia" un objeto (real, imaginario, abstracto, recordado).</p>
+      <p style="margin:0">Esto genera la <strong>estructura intencional</strong>: la correlación entre el acto de conciencia y su objeto. La conciencia <em>es</em> esa correlación, no una cosa que "tiene" objetos dentro.</p>
+    </div>
+
+    <h3>Ego cogito — Ego idéntico y modos de vida</h3>
+    <p>El ego no es un punto inmutable; se identifica a través de sus múltiples actos de conciencia (<span class="t">cogitationes</span>). Husserl distingue distintos modos en que el ego vive intencionalmente (§14, p. 64): su vida <strong>perceptiva y representativa</strong>, su vida <strong>judicativa</strong>, su vida <strong>valorativa</strong>, su vida <strong>volitiva</strong>.</p>
+
+    <!-- SVG modos de vida del ego -->
+    <div class="svg-label">Diagrama · Ego idéntico — modos de vida (§14)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 620 200" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="620" height="200" fill="#fdfaf4" rx="3"/>
+        <!-- centro: ego -->
+        <ellipse cx="310" cy="100" rx="58" ry="38" fill="#1a1510"/>
+        <text x="310" y="96" text-anchor="middle" font-size="12" fill="#f5f0e8" font-weight="bold">Ego</text>
+        <text x="310" y="112" text-anchor="middle" font-size="10" fill="#c9973a" font-style="italic">cogito</text>
+
+        <!-- nodos de vida: radiales -->
+        <!-- perceptiva -->
+        <line x1="256" y1="72" x2="162" y2="48" stroke="#d4cbbf" stroke-width="1.2"/>
+        <rect x="60" y="32" width="100" height="34" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="110" y="47" text-anchor="middle" font-size="10.5" fill="#1a1510">vida perceptiva</text>
+        <text x="110" y="60" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">y representativa</text>
+
+        <!-- judicativa -->
+        <line x1="263" y1="86" x2="162" y2="90" stroke="#d4cbbf" stroke-width="1.2"/>
+        <rect x="60" y="75" width="100" height="28" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="110" y="93" text-anchor="middle" font-size="10.5" fill="#1a1510">vida judicativa</text>
+
+        <!-- valorativa -->
+        <line x1="263" y1="114" x2="162" y2="130" stroke="#d4cbbf" stroke-width="1.2"/>
+        <rect x="60" y="117" width="100" height="28" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="110" y="135" text-anchor="middle" font-size="10.5" fill="#1a1510">vida valorativa</text>
+
+        <!-- volitiva -->
+        <line x1="265" y1="128" x2="162" y2="162" stroke="#d4cbbf" stroke-width="1.2"/>
+        <rect x="60" y="149" width="100" height="28" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="110" y="167" text-anchor="middle" font-size="10.5" fill="#1a1510">vida volitiva</text>
+
+        <!-- derecha: cogitationes -->
+        <line x1="368" y1="100" x2="430" y2="100" stroke="#c9973a" stroke-width="1.5" marker-end="url(#arrg2)"/>
+        <rect x="432" y="75" width="160" height="50" rx="2" fill="#fdfaf4" stroke="#c9973a" stroke-width="1.2"/>
+        <text x="512" y="96" text-anchor="middle" font-size="11" fill="#1a1510" font-weight="bold">cogitationes</text>
+        <text x="512" y="112" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">vivencias en su ocurrencia</text>
+
+        <defs>
+          <marker id="arrg2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#c9973a"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <h3>La reducción fenomenológica y el ego trascendental</h3>
+    <p>Para llegar al ego trascendental hay que ejecutar la <span class="t">epoché</span>: ponemos "entre paréntesis" la tesis de la existencia del mundo natural. No negamos el mundo, simplemente suspendemos el juicio sobre si existe independientemente.</p>
+
+    <!-- SVG reducción -->
+    <div class="svg-label">Diagrama · La reducción fenomenológica (§14)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 580 200" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="580" height="200" fill="#fdfaf4" rx="3"/>
+
+        <rect x="30" y="30" width="150" height="50" rx="2" fill="#ede8dc" stroke="#d4cbbf" stroke-width="1.2"/>
+        <text x="105" y="52" text-anchor="middle" font-size="11" fill="#1a1510" font-weight="bold">Ego concreto</text>
+        <text x="105" y="68" text-anchor="middle" font-size="10" fill="#6b5a3e" font-style="italic">(Descartes se queda aquí)</text>
+
+        <line x1="182" y1="55" x2="220" y2="55" stroke="#c9973a" stroke-width="1.5" marker-end="url(#arr2)"/>
+        <text x="200" y="48" text-anchor="middle" font-size="9" fill="#c9973a" font-family="'Space Mono', monospace">epoché</text>
+
+        <rect x="222" y="30" width="140" height="50" rx="2" fill="#fdfaf4" stroke="#8b3a2a" stroke-width="1.5"/>
+        <text x="292" y="52" text-anchor="middle" font-size="11" fill="#8b3a2a" font-weight="bold">Ego trascendental</text>
+        <text x="292" y="68" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">residuo de la reducción</text>
+
+        <line x1="364" y1="55" x2="400" y2="55" stroke="#d4cbbf" stroke-width="1.2" marker-end="url(#arrg3)"/>
+        <text x="381" y="48" text-anchor="middle" font-size="9" fill="#6b5a3e" font-family="'Space Mono', monospace">otra red.</text>
+
+        <rect x="402" y="30" width="148" height="50" rx="2" fill="#1a1510" stroke="#1a1510"/>
+        <text x="476" y="52" text-anchor="middle" font-size="11" fill="#f5f0e8" font-weight="bold">Esfera de</text>
+        <text x="476" y="67" text-anchor="middle" font-size="11" fill="#c9973a" font-weight="bold">propiedad</text>
+
+        <!-- descripción esfera -->
+        <text x="476" y="110" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">núcleo de experiencias</text>
+        <text x="476" y="124" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">absolutamente mías</text>
+        <text x="476" y="138" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">→ base para la</text>
+        <text x="476" y="152" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">intersubjetividad</text>
+
+        <defs>
+          <marker id="arr2" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#c9973a"/>
+          </marker>
+          <marker id="arrg3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#d4cbbf"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <h3>Fenomenología trascendental vs. Psicología pura de la consciencia</h3>
+    <div class="nota-profe">
+      La psicología hace del ego puro una experiencia natural. Diferencias: hay psicología pura de la consciencia y psicología trascendental. (Aquí es donde Descartes se equivoca.) No confundamos al yo con el ego.
+    </div>
+
+    <table class="tabla-comp">
+      <tr>
+        <th>Fenomenología trascendental</th>
+        <th>Psicología pura de la consciencia</th>
+      </tr>
+      <tr>
+        <td>Ligada a la inviolable observancia de la reducción trascendental (epoché). El mundo no está en vigor como realidad efectiva, sino solo como <em>fenómeno de realidad</em>.</td>
+        <td>Tiene datos del mundo presupuesto como existente, es decir, datos concebidos como componentes psíquicos del hombre. Opera dentro de la actitud natural.</td>
+      </tr>
+      <tr>
+        <td>No habla de "datos paralelos": el mundo en la actitud fenomenológica no es realidad efectiva sino fenómeno.</td>
+        <td>Sigue una descripción psicológica basada en la experiencia puramente interior, en la experiencia de la propia vida de conciencia.</td>
+      </tr>
+      <tr>
+        <td>Objeto: el ego trascendental como estructura universal de conciencia.</td>
+        <td>Objeto: los fenómenos mentales como hechos empíricos dentro del mundo natural.</td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECCIÓN 3 — §§15-16
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>§§ 15–16 — Reflexión trascendental, Noesis y Noema</h2>
+
+    <div class="pregunta">¿Cuál es la relación entre noesis y noema en Husserl?</div>
+
+    <h3>§ 15 — Reflexión natural y reflexión trascendental</h3>
+    <p>Husserl distingue dos tipos de reflexión sobre la conciencia. En la <strong>reflexión natural</strong> — incluida la psicológica — operamos sobre la base del mundo ya dado como existente. En la <strong>reflexión fenomenológico-trascendental</strong>, en cambio, abandonamos ese terreno practicando la epoché universal: el yo reflexionante no co-ejecuta la posición natural del ser contenida en el cogito originario.</p>
+
+    <div class="nota-profe">
+      La reflexión trascendental consiste en contemplar el cogito ya reducido trascendentalmente y describirlo, sin que co-ejecutemos la posición natural del ser. El yo fenomenológico se establece como espectador desinteresado sobre el yo ingenuamente interesado en el mundo.
+    </div>
+
+    <div class="pregunta">¿En qué sentido una co-ejecución es trascendental y se diferencia de algo que no lo es?</div>
+
+    <div class="respuesta">
+      <p>Una <strong>co-ejecución trascendental</strong> es cuando yo no solo vivo un acto de conciencia de manera natural (p.ej. simplemente percibo una silla), sino que además realizo la reducción y <em>acompaño reflexivamente</em> ese acto para ver su estructura constituyente: la noesis que lo anima y el noema que se constituye. Es "co-ejecutar" porque no interrumpo la vivencia original, sino que la acompaño filosóficamente desde el nivel trascendental.</p>
+      <p style="margin:0">Se diferencia de la actitud natural porque en la actitud natural simplemente vivo los actos sin preguntar por sus condiciones de posibilidad.</p>
+    </div>
+
+    <p>Siguiendo el principio metodológico del doble tópico <em>cogito–cogitatum (qua cogitatum)</em>, Husserl abre dos direcciones descriptivas complementarias:</p>
+    <ul>
+      <li><strong>Dirección noemática:</strong> descripción del objeto intencional tal como es dado, con sus determinaciones y modos de ser.</li>
+      <li><strong>Dirección noética:</strong> descripción de los modos del cogito mismo — percepción, recuerdo, retención — con sus diferencias modales.</li>
+    </ul>
+
+    <!-- SVG correlación noesis/noema -->
+    <div class="svg-label">Diagrama · Correlación intencional — Noesis / Noema (§§15–16)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 620 210" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="620" height="210" fill="#fdfaf4" rx="3"/>
+
+        <!-- título correlación -->
+        <text x="310" y="24" text-anchor="middle" font-size="10" fill="#6b5a3e" font-family="'Space Mono', monospace" letter-spacing="1.5">CORRELACIÓN INTENCIONAL</text>
+        <!-- llave arriba -->
+        <path d="M110,32 Q310,18 510,32" fill="none" stroke="#c9973a" stroke-width="1.2"/>
+
+        <!-- NOESIS -->
+        <rect x="30" y="44" width="230" height="130" rx="3" fill="#ede8dc" stroke="#c9973a" stroke-width="1.5"/>
+        <text x="145" y="68" text-anchor="middle" font-size="15" fill="#1a1510" font-weight="bold">Noesis</text>
+        <line x1="50" y1="76" x2="240" y2="76" stroke="#d4cbbf" stroke-width="0.8"/>
+        <text x="145" y="94" text-anchor="middle" font-size="10.5" fill="#6b5a3e" font-style="italic">acto intencional mismo</text>
+        <text x="145" y="110" text-anchor="middle" font-size="10" fill="#6b5a3e">percibir · juzgar · valorar</text>
+        <text x="145" y="124" text-anchor="middle" font-size="10" fill="#6b5a3e">recordar · imaginar · desear</text>
+        <text x="145" y="144" text-anchor="middle" font-size="10" fill="#8b3a2a" font-style="italic">→ lado subjetivo</text>
+        <text x="145" y="160" text-anchor="middle" font-size="10" fill="#8b3a2a" font-style="italic">el "cómo" del intencionar</text>
+
+        <!-- flecha doble central -->
+        <line x1="262" y1="109" x2="358" y2="109" stroke="#1a1510" stroke-width="1.8" marker-end="url(#arr3)" marker-start="url(#arr3b)"/>
+        <text x="310" y="103" text-anchor="middle" font-size="9" fill="#1a1510" font-family="'Space Mono', monospace">esencial</text>
+
+        <!-- NOEMA -->
+        <rect x="360" y="44" width="230" height="130" rx="3" fill="#f5f0e8" stroke="#8b3a2a" stroke-width="1.5"/>
+        <text x="475" y="68" text-anchor="middle" font-size="15" fill="#1a1510" font-weight="bold">Noema</text>
+        <line x1="380" y1="76" x2="570" y2="76" stroke="#d4cbbf" stroke-width="0.8"/>
+        <text x="475" y="94" text-anchor="middle" font-size="10.5" fill="#6b5a3e" font-style="italic">objeto en cuanto dado</text>
+        <text x="475" y="110" text-anchor="middle" font-size="10" fill="#6b5a3e">en la conciencia</text>
+        <text x="475" y="130" text-anchor="middle" font-size="9.5" fill="#6b5a3e">≠ objeto real del mundo</text>
+        <text x="475" y="144" text-anchor="middle" font-size="10" fill="#8b3a2a" font-style="italic">→ lado objetivo-intencional</text>
+        <text x="475" y="160" text-anchor="middle" font-size="10" fill="#8b3a2a" font-style="italic">el "qué" tal como se da</text>
+
+        <!-- síntesis abajo -->
+        <rect x="160" y="188" width="300" height="16" rx="2" fill="#1a1510"/>
+        <text x="310" y="200" text-anchor="middle" font-size="9.5" fill="#c9973a" font-family="'Space Mono', monospace" letter-spacing="1">SÍNTESIS → unidad del objeto intencional</text>
+
+        <defs>
+          <marker id="arr3" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#1a1510"/>
+          </marker>
+          <marker id="arr3b" markerWidth="7" markerHeight="7" refX="2" refY="3" orient="auto-start-reverse">
+            <path d="M0,0 L0,6 L7,3 z" fill="#1a1510"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">La correlación noemática</span>
+      <p><strong><span class="t">Noesis</span></strong> (plural: noeses): el acto de conciencia en sí, el "cómo" del intencionar. Es el lado subjetivo de la vivencia intencional — percibir, recordar, imaginar, juzgar, desear. Cada noesis tiene una cualidad (tipo de acto) y una materia (lo que apunta).</p>
+      <p><strong><span class="t">Noema</span></strong> (plural: noemas): el objeto <em>tal como es dado</em> en el acto de conciencia, es decir, el correlato objetivo intencional. No es el objeto real del mundo, sino el objeto "en tanto que percibido", "en tanto que recordado", etc.</p>
+      <p style="margin:0">La relación es de <strong>correlación esencial</strong>: toda noesis tiene su noema; son dos lados inseparables de un mismo acto intencional. No hay noesis sin noema ni noema sin noesis.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Características del noema</span>
+      <p>El noema no es un objeto neutro y desnudo. Siempre aparece con <strong>modos temporales</strong> — presente, pasado, futuro — y con <strong>modos de ser</strong> — cierto, dudoso, probable, posible, falso.</p>
+      <p style="margin:0">Por eso todo acto intencional consiste en dirigirse a un objeto bajo una modalidad. No hay pensamiento vacío: siempre es pensamiento de algo, y ese algo comparece de algún modo para la conciencia.</p>
+    </div>
+
+    <div class="nota-profe">
+      <strong>Percepción vs. lenguaje:</strong> la intencionalidad no pasa por el lenguaje — es pre-lingüística. Puedo intencionar un objeto antes de tener la palabra para nombrarlo. El lenguaje es una modalidad de la intencionalidad, no su condición de posibilidad.
+    </div>
+
+    <h3>Co-apariciones y síntesis intencional</h3>
+    <div class="nota-profe">
+      La unidad e identidad de los modos de aparición múltiples del objeto intencional son posibles gracias a la síntesis que facilita la aparición de un objeto en mi conciencia.
+    </div>
+    <p>Un mismo objeto (p.ej. una mesa) puede darse desde innumerables perspectivas, en distintos momentos y condiciones. Sin embargo, la conciencia lo reconoce como <em>el mismo</em> objeto a través de sus múltiples apariciones. Esto es posible gracias a la <strong>síntesis intencional</strong>: la conciencia unifica los "escorzos" (<span class="t">Abschattungen</span>) en una identidad noemática estable.</p>
+    <p>Las <strong>co-apariciones</strong> son exactamente esos escorzos: cada perspectiva parcial desde la que se da un objeto. Ninguna agota al objeto; todas apuntan hacia él como horizonte de plenificación.</p>
+
+    <div class="concepto">
+      <span class="concepto-label">Lo co-mentado y los horizontes</span>
+      <p>Cuando percibo una botella, no se me da solo la cara actualmente visible. También van co-mentadas las caras no vistas, los perfiles posibles, el suelo, la luz, la posición del cuerpo y las condiciones de visibilidad que sostienen esa aparición.</p>
+      <p style="margin:0">Eso significa que el objeto intencional no se agota en lo explícitamente dado: lleva consigo un horizonte implícito de sentido. Sin ese horizonte, tendríamos fragmentos dispersos y no la unidad del mismo objeto.</p>
+    </div>
+
+    <h3>§ 16 — Digresión: El ego cogito como punto de partida común (y el fracaso del sensualismo)</h3>
+
+    <div class="nota-profe">
+      Tanto para una egología trascendental-descriptiva como para una psicología pura interior, no hay otro comienzo sino el del ego cogito. La teoría descriptiva de la conciencia que comienza de un modo radical no tiene ante sí tales datos y totalidades como prejuicios.
+    </div>
+
+    <p>Husserl señala en §16 que tanto la fenomenología trascendental como la psicología pura de la conciencia deben comenzar desde el <em>ego cogito</em>. Sin embargo, el camino se obstruye si se comienza desde las teorías tradicionales de la sensación.</p>
+
+    <p>Husserl critica al <strong>sensualismo</strong> y la teoría de las figuras (las imágenes como copias de las cosas) porque ya presuponen demasiado. La fenomenología quiere partir de algo más radical: <em>la experiencia pura, todavía muda</em> — base para las vivencias intencionadas — antes de cualquier teoría sobre ella.</p>
+    <p>La teoría tradicional de la conciencia perdió de vista dos cosas esenciales:</p>
+    <ul>
+      <li>La descripción de los <em>cogitata qua cogitata</em>: los objetos en tanto que son pensados como tales (el noema).</li>
+      <li>Las descripciones mismas de las cogitaciones: los actos en su ocurrencia concreta.</li>
+    </ul>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECCIÓN 4 — §17
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>§ 17 — El carácter bilateral de la investigación. La síntesis como forma originaria de la conciencia</h2>
+
+    <div class="nota-profe">
+      Noemática y noética: correlacionado con una estructura intencional, donde la conciencia es esa correlación.
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Noemática vs. Noética</span>
+      <p><strong>Noética:</strong> el análisis del lado de los <em>actos</em> (noeses) — cómo la conciencia ejecuta sus intenciones, sus modos, sus síntesis activas.</p>
+      <p><strong>Noemática:</strong> el análisis del lado de los <em>contenidos intencionales</em> (noemas) — qué se da, cómo se da, con qué sentido noemático.</p>
+      <p style="margin:0">La conciencia <em>es</em> esa correlación: no es una cosa que "tiene" actos y objetos, sino la estructura relacional misma.</p>
+    </div>
+
+    <h3>La síntesis como forma originaria</h3>
+    <p>El modo de enlace que unifica conciencia con conciencia es la <strong>síntesis</strong>, exclusivamente propia de la conciencia. El cogito tiene conciencia de su cogitatum no en un vacío sin distinciones, sino en una estructura descriptiva de multiplicidades pertenecientes a una composición <strong>noético-noemática</strong> totalmente determinada.</p>
+
+    <!-- SVG síntesis y escorzos §17 -->
+    <div class="svg-label">Diagrama · Síntesis y modos de aparición — Abschattungen (§17)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 620 210" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="620" height="210" fill="#fdfaf4" rx="3"/>
+
+        <!-- objeto central -->
+        <ellipse cx="310" cy="105" rx="55" ry="36" fill="#1a1510"/>
+        <text x="310" y="100" text-anchor="middle" font-size="12" fill="#f5f0e8" font-weight="bold">Objeto</text>
+        <text x="310" y="116" text-anchor="middle" font-size="9.5" fill="#c9973a" font-style="italic">idéntico</text>
+
+        <!-- escorzos radiales -->
+        <line x1="258" y1="82" x2="162" y2="52" stroke="#d4cbbf" stroke-width="1.2"/>
+        <rect x="55" y="36" width="105" height="30" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="107" y="55" text-anchor="middle" font-size="10" fill="#6b5a3e" font-style="italic">escorzo visual cercano</text>
+
+        <line x1="255" y1="105" x2="155" y2="105" stroke="#d4cbbf" stroke-width="1.2"/>
+        <rect x="50" y="89" width="103" height="30" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="101" y="108" text-anchor="middle" font-size="10" fill="#6b5a3e" font-style="italic">escorzo táctil</text>
+
+        <line x1="260" y1="128" x2="162" y2="158" stroke="#d4cbbf" stroke-width="1.2"/>
+        <rect x="55" y="142" width="105" height="30" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="107" y="161" text-anchor="middle" font-size="10" fill="#6b5a3e" font-style="italic">escorzo auditivo</text>
+
+        <line x1="365" y1="82" x2="458" y2="52" stroke="#d4cbbf" stroke-width="1.2"/>
+        <rect x="460" y="36" width="105" height="30" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="512" y="55" text-anchor="middle" font-size="10" fill="#6b5a3e" font-style="italic">escorzo visual lejano</text>
+
+        <line x1="365" y1="105" x2="465" y2="105" stroke="#d4cbbf" stroke-width="1.2"/>
+        <rect x="467" y="89" width="103" height="30" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="518" y="108" text-anchor="middle" font-size="10" fill="#6b5a3e" font-style="italic">escorzo en recuerdo</text>
+
+        <line x1="362" y1="128" x2="458" y2="158" stroke="#d4cbbf" stroke-width="1.2"/>
+        <rect x="460" y="142" width="105" height="30" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="512" y="161" text-anchor="middle" font-size="10" fill="#6b5a3e" font-style="italic">escorzo en fantasía</text>
+
+        <!-- etiqueta síntesis -->
+        <rect x="195" y="178" width="230" height="20" rx="2" fill="#1a1510"/>
+        <text x="310" y="192" text-anchor="middle" font-size="9.5" fill="#c9973a" font-family="'Space Mono', monospace" letter-spacing="1">SÍNTESIS · Abschattungen → unidad</text>
+      </svg>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Escorzos y síntesis (§17)</span>
+      <p>Un objeto como el cubo, por ejemplo, aparece "ora en apariciones cercanas, ora en apariciones lejanas, en los cambiantes modos del <em>ahí</em> y el <em>allí</em>, frente a un <em>aquí absoluto</em>". Cada modo de aparición — cada <strong><span class="t">Abschattung</span></strong> (escorzo) — es en sí mismo exhibición de la forma, del color, etc. del objeto.</p>
+      <p>La conciencia no recibe una sucesión inconexa de escorzos: los unifica en la síntesis, gracias a la cual el objeto llega a ser consciente siempre como <em>uno y lo mismo</em>.</p>
+      <p style="margin:0">Esto vale también para todos los otros modos de intuición: el recuerdo, la expectativa. El objeto intencional como tal es consciente como <strong>unidad idéntica de modos cambiantes noético-noemáticos</strong> de conciencia, ya sean intuitivos o no intuitivos.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Constitución</span>
+      <p>La constitución nombra esta unidad compleja entre noesis y noema. El objeto no es un uno rígido dado de una vez; el <em>eidos</em> mismo se constituye como síntesis de múltiples apariciones y remisiones temporales.</p>
+      <p style="margin:0">Del lado del sujeto ocurre algo paralelo: percibir implica recuerdos, anticipaciones, cinestesias y hábitos de constitución. Incluso lo que llamamos "inmediato" ya está tejido por síntesis.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECCIÓN 5 — §18
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>§ 18 — La identificación como forma fundamental de la síntesis. El flujo temporal de la conciencia</h2>
+
+    <div class="nota-profe">
+      La forma fundamental de la síntesis universal es la conciencia del tiempo inmanente que todo lo abarca. La síntesis de identificación domina toda la vida de la conciencia, transcurriendo pasivamente en la forma de la continua conciencia del tiempo inmanente.
+    </div>
+
+    <p>En §18 Husserl muestra que la <strong>identificación</strong> es la forma más elemental de síntesis: la síntesis que todo lo domina, que transcurre pasivamente en la continua conciencia del tiempo inmanente. Toda vivencia tiene su <em>temporalidad vivencial</em> (<span class="t">Erlebniszeitlichkeit</span>).</p>
+
+    <h3>La estructura retención–cogito–protención</h3>
+
+    <!-- SVG flujo temporal -->
+    <div class="svg-label">Diagrama · Flujo temporal de la conciencia (§18)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="640" height="200" fill="#fdfaf4" rx="3"/>
+
+        <!-- objeto intencional arriba -->
+        <rect x="256" y="12" width="128" height="38" rx="2" fill="#ede8dc" stroke="#c9973a" stroke-width="1.2"/>
+        <text x="320" y="28" text-anchor="middle" font-size="11" fill="#1a1510" font-weight="bold">objeto intencional</text>
+        <text x="320" y="43" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">★ suerte de expectativa</text>
+        <!-- línea objeto → cogito -->
+        <line x1="320" y1="51" x2="320" y2="95" stroke="#c9973a" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arr4)"/>
+
+        <!-- línea temporal -->
+        <line x1="40" y1="110" x2="600" y2="110" stroke="#1a1510" stroke-width="1.8"/>
+        <!-- puntas -->
+        <polygon points="600,110 590,106 590,114" fill="#1a1510"/>
+        <polygon points="40,110 50,106 50,114" fill="#1a1510"/>
+
+        <!-- cogito central -->
+        <circle cx="320" cy="110" r="22" fill="#1a1510"/>
+        <text x="320" y="107" text-anchor="middle" font-size="11" fill="#f5f0e8" font-weight="bold">cogito</text>
+        <text x="320" y="121" text-anchor="middle" font-size="9" fill="#c9973a">ahora</text>
+
+        <!-- retención izquierda -->
+        <text x="180" y="100" text-anchor="middle" font-size="13" fill="#8b3a2a" font-weight="bold">Retención</text>
+        <text x="180" y="132" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">justo-pasado retenido</text>
+        <text x="180" y="146" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">≠ recuerdo</text>
+        <text x="68" y="130" text-anchor="middle" font-size="9.5" fill="#6b5a3e">∞ pasado</text>
+
+        <!-- protención derecha -->
+        <text x="460" y="100" text-anchor="middle" font-size="13" fill="#8b3a2a" font-weight="bold">Protención</text>
+        <text x="460" y="132" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">expectativa intencional</text>
+        <text x="460" y="146" text-anchor="middle" font-size="9.5" fill="#6b5a3e" font-style="italic">≠ anticipación consciente</text>
+        <text x="572" y="130" text-anchor="middle" font-size="9.5" fill="#6b5a3e">∞ futuro</text>
+
+        <!-- etiqueta flujo -->
+        <rect x="220" y="170" width="200" height="20" rx="2" fill="#1a1510"/>
+        <text x="320" y="184" text-anchor="middle" font-size="9.5" fill="#c9973a" font-family="'Space Mono', monospace" letter-spacing="1">flujo temporal · horizonte intencional</text>
+
+        <defs>
+          <marker id="arr4" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#c9973a"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Temporalidad interna de la conciencia</span>
+      <p><strong><span class="t">Retención</span>:</strong> la "cola" del presente — el justo-pasado que todavía retengo vivamente. No es un recuerdo propiamente dicho; es la prolongación intencional del ahora hacia lo que acaba de ocurrir. Se extiende hacia el pasado indefinidamente, perdiendo vivacidad.</p>
+      <p><strong><span class="t">Cogito</span> (impresión primaria / ahora):</strong> el punto vivo del presente, el acto en curso. Nunca existe aislado: siempre está rodeado por retención y protención.</p>
+      <p><strong><span class="t">Protención</span>:</strong> la "suerte de expectativa" — la expectativa intencional de lo que está por venir, el horizonte de futuro inmediato que la conciencia proyecta. No es una anticipación consciente deliberada; es estructural a cada acto.</p>
+      <p style="margin:0">Los tres juntos constituyen el <strong>flujo de la conciencia interna del tiempo</strong>: la conciencia nunca está en un puro instante puntual, sino siempre extendida temporalmente. El <strong>horizonte intencional</strong> es la totalidad de ese campo temporal más el campo de posibilidades abiertas que rodea cada vivencia.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Síntesis pasiva vs. síntesis activa (diferencia con Kant)</span>
+      <p>La síntesis temporal en Husserl es <strong>pasiva</strong>: no requiere ninguna actividad del entendimiento que esté por encima de las vivencias. Esto la distingue radicalmente de Kant, donde hay una actividad del entendimiento que unifica la sensibilidad desde arriba.</p>
+      <p style="margin:0">En Husserl, la unidad temporal se constituye en la conciencia misma, desde adentro, pasivamente. Por eso, aunque Husserl y Kant comparten términos como "síntesis" o "trascendental", sus propuestas son estructuralmente distintas.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       CLASE 21 ABR — APUNTES DE CLASE
+       Fuente: transcripción limpia + contraste con Husserl §§13–19
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>Clase 21 abr — Segunda meditación: §§ 13–19</h2>
+
+    <div class="concepto">
+      <span class="concepto-label">Apuntes integrados desde clase</span>
+      <p style="margin:0">Contenido integrado desde la transcripción limpia de la última parte de la clase, contrastado con Husserl §§13–19. Mantiene el formato de apuntes de clase y sigue el hilo de la exposición de la profe.</p>
+    </div>
+
+    <h3>Subjetividad trascendental y actitud natural</h3>
+
+    <div class="nota-profe">
+      La subjetividad trascendental tiene prioridad frente a la experiencia natural: el contenido del mundo no se pierde, sino que pasa a valer como fenómeno de conciencia.
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Prioridad de la subjetividad trascendental</span>
+      <p>Después de la reducción, ya no corresponde volver ingenuamente a preguntar por "lo real del mundo". En la actitud natural sí podemos decir de una alucinación que "no es real"; en la subjetividad trascendental, en cambio, esa alucinación vale como <em>vivencia de conciencia</em>.</p>
+      <p style="margin:0">Por eso quedarse simplemente en el mundo vivido, en el mundo de la ciencia o en la experiencia natural sería recaer en la ingenuidad. La fenomenología ya está trabajando dentro de la subjetividad trascendental.</p>
+    </div>
+
+    <h3>Esquema general de la meditación</h3>
+
+    <div class="nota-profe">
+      Las dos estructuras universales que aparecen aquí son la intencionalidad y la temporalidad. Más adelante veremos que su despliegue pasa también por los modos de pasividad y actividad.
+    </div>
+
+    <!-- SVG esquema de pizarra 21 abr -->
+    <div class="svg-label">Diagrama · Esquema de pizarra — Meditación segunda (clase 21 abr)</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 640 310" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="640" height="310" fill="#fdfaf4" rx="3"/>
+
+        <!-- nodo central: SUBJETIVIDAD -->
+        <rect x="240" y="122" width="160" height="46" rx="3" fill="#1a1510" stroke="#1a1510"/>
+        <text x="320" y="143" text-anchor="middle" font-size="11" fill="#c9973a" font-family="'Space Mono', monospace" letter-spacing="1.1">SUBJETIVIDAD</text>
+        <text x="320" y="159" text-anchor="middle" font-size="10" fill="#ede8dc" font-style="italic">trascendental</text>
+
+        <!-- nodo arriba izq: ESTRUCTURAS -->
+        <rect x="30" y="18" width="190" height="76" rx="3" fill="#ede8dc" stroke="#c9973a" stroke-width="1.5"/>
+        <text x="125" y="40" text-anchor="middle" font-size="11.5" fill="#1a1510" font-weight="bold">ESTRUCTURAS</text>
+        <line x1="50" y1="48" x2="200" y2="48" stroke="#d4cbbf" stroke-width="0.8"/>
+        <text x="125" y="63" text-anchor="middle" font-size="10.5" fill="#6b5a3e">1. Intencionalidad</text>
+        <text x="125" y="80" text-anchor="middle" font-size="10.5" fill="#6b5a3e">2. Temporalidad</text>
+
+        <!-- nodo arriba der: MODOS -->
+        <rect x="420" y="18" width="190" height="76" rx="3" fill="#ede8dc" stroke="#c9973a" stroke-width="1.5"/>
+        <text x="515" y="40" text-anchor="middle" font-size="11.5" fill="#1a1510" font-weight="bold">MODOS</text>
+        <line x1="440" y1="48" x2="590" y2="48" stroke="#d4cbbf" stroke-width="0.8"/>
+        <text x="515" y="63" text-anchor="middle" font-size="10.5" fill="#6b5a3e">pasividad</text>
+        <text x="515" y="80" text-anchor="middle" font-size="10.5" fill="#6b5a3e">actividad</text>
+
+        <!-- nodo abajo: MÉTODO -->
+        <rect x="190" y="228" width="260" height="62" rx="3" fill="#f5f0e8" stroke="#8b3a2a" stroke-width="1.5"/>
+        <text x="320" y="250" text-anchor="middle" font-size="11.5" fill="#1a1510" font-weight="bold">MÉTODO EIDÉTICO</text>
+        <line x1="210" y1="256" x2="430" y2="256" stroke="#d4cbbf" stroke-width="0.8"/>
+        <text x="320" y="272" text-anchor="middle" font-size="10" fill="#6b5a3e">eidos formales · materiales</text>
+
+        <!-- flechas -->
+        <defs>
+          <marker id="a21" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#6b5a3e"/>
+          </marker>
+        </defs>
+        <line x1="175" y1="94" x2="252" y2="130" stroke="#6b5a3e" stroke-width="1.3" marker-end="url(#a21)"/>
+        <line x1="465" y1="94" x2="388" y2="130" stroke="#6b5a3e" stroke-width="1.3" marker-end="url(#a21)"/>
+        <line x1="320" y1="168" x2="320" y2="226" stroke="#8b3a2a" stroke-width="1.3" stroke-dasharray="4,3" marker-end="url(#a21)"/>
+
+        <!-- etiqueta abajo -->
+        <rect x="218" y="296" width="204" height="12" rx="2" fill="#1a1510"/>
+        <text x="320" y="306" text-anchor="middle" font-size="8.5" fill="#c9973a" font-family="'Space Mono', monospace" letter-spacing="0.8">reducción · descripción eidética</text>
+      </svg>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Lectura del esquema</span>
+      <p><strong>ESTRUCTURAS</strong>: las dos estructuras universales del ego trascendental — (1) la <span class="t">intencionalidad</span> (toda conciencia es conciencia <em>de</em> algo) y (2) la <span class="t">temporalidad</span> interna (toda vivencia tiene su flujo retención–ahora–protención). Son las formas que atraviesan <em>todas</em> las vivencias.</p>
+      <p><strong>MODOS</strong>: la misma vida de conciencia no aparece solo como estructura, sino también como juego de <em>pasividad</em> y <em>actividad</em>. Más adelante Husserl complicará esto genéticamente, pero aquí apenas queda enunciado como horizonte del análisis.</p>
+      <p><strong>SUBJETIVIDAD</strong>: la meditación segunda ya supone que el sujeto hizo la reducción y se ha vuelto observador desinteresado. Estamos dentro de lo que Husserl llama en <em>Ideas I</em> el "reino de lo nunca hollado": la esfera infinita de experiencia del ego trascendental.</p>
+      <p style="margin:0"><strong>MÉTODO EIDÉTICO</strong>: el primer acceso es eidético y estático. Husserl empieza por buscar esencias — <em>formales</em> y <em>materiales</em> — antes de pasar a la dimensión genética.</p>
+    </div>
+
+    <p>Como segunda presentación del mismo mapa, conviene conservar también la versión más cercana a la pizarra original. No reemplaza el esquema anterior: lo complementa y deja visibles algunas anotaciones de clase que allí quedaban mejor ubicadas.</p>
+
+    <div class="svg-label">Diagrama · Esquema de pizarra — versión ampliada desde v3</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 700 432" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="700" height="432" fill="#fdfaf4" rx="3"/>
+
+        <rect x="0" y="0" width="700" height="42" rx="3" fill="#1a1510"/>
+        <rect x="0" y="30" width="700" height="12" fill="#1a1510"/>
+        <text x="350" y="26" text-anchor="middle" font-size="10" fill="#c9973a" font-family="'Space Mono', monospace" letter-spacing="2">ESTRUCTURA ELEMENTAL · MEDITACIONES CARTESIANAS</text>
+
+        <line x1="56" y1="58" x2="56" y2="402" stroke="#c9973a" stroke-width="2.4"/>
+        <circle cx="56" cy="58" r="4.5" fill="#c9973a"/>
+        <circle cx="56" cy="402" r="4.5" fill="#c9973a"/>
+
+        <line x1="56" y1="94" x2="96" y2="94" stroke="#c9973a" stroke-width="2"/>
+        <rect x="96" y="78" width="134" height="32" rx="2" fill="#c9973a"/>
+        <text x="163" y="99" text-anchor="middle" font-size="10.5" fill="#fdfaf4" font-family="'Space Mono', monospace" letter-spacing="1">ESTRUCTURAS</text>
+
+        <line x1="229" y1="68" x2="229" y2="133" stroke="#6b5a3e" stroke-width="1.5"/>
+        <line x1="229" y1="76" x2="258" y2="76" stroke="#6b5a3e" stroke-width="1.3"/>
+        <rect x="258" y="63" width="166" height="26" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="341" y="80" text-anchor="middle" font-size="11" fill="#1a1510">1. Intencionalidad</text>
+        <line x1="229" y1="120" x2="258" y2="120" stroke="#6b5a3e" stroke-width="1.3"/>
+        <rect x="258" y="107" width="112" height="26" rx="2" fill="#1a1510"/>
+        <text x="314" y="124" text-anchor="middle" font-size="11" fill="#c9973a" font-weight="bold">2. Temporal</text>
+
+        <line x1="370" y1="120" x2="412" y2="120" stroke="#8b3a2a" stroke-width="1.6" marker-end="url(#aRust5)"/>
+
+        <rect x="414" y="62" width="270" height="108" rx="3" fill="#ede8dc" stroke="#8b3a2a" stroke-width="1.3"/>
+        <text x="549" y="80" text-anchor="middle" font-size="8.5" fill="#8b3a2a" font-family="'Space Mono', monospace" letter-spacing="1.5">NOTA DE CLASE</text>
+        <line x1="426" y1="86" x2="672" y2="86" stroke="#d4cbbf" stroke-width="0.7"/>
+        <text x="426" y="102" font-size="10" fill="#1a1510" font-style="italic">síntesis inmediata de las síntesis</text>
+        <text x="426" y="116" font-size="10" fill="#1a1510" font-style="italic">temporales</text>
+        <text x="426" y="133" font-size="9.5" fill="#6b5a3e">= proceso de síntesis para la conciencia</text>
+        <text x="426" y="148" font-size="9.5" fill="#6b5a3e">= modo de la intencionalidad</text>
+        <text x="426" y="161" font-size="9" fill="#8b3a2a">→ ver §§ 18–19</text>
+
+        <line x1="56" y1="200" x2="96" y2="200" stroke="#c9973a" stroke-width="2"/>
+        <rect x="96" y="184" width="134" height="32" rx="2" fill="#c9973a"/>
+        <text x="163" y="205" text-anchor="middle" font-size="10.5" fill="#fdfaf4" font-family="'Space Mono', monospace" letter-spacing="1">FUNCIONES</text>
+
+        <line x1="229" y1="176" x2="229" y2="235" stroke="#6b5a3e" stroke-width="1.5"/>
+        <line x1="229" y1="183" x2="258" y2="183" stroke="#6b5a3e" stroke-width="1.3"/>
+        <rect x="258" y="170" width="152" height="26" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="334" y="187" text-anchor="middle" font-size="11" fill="#1a1510">Int. sensible</text>
+        <line x1="229" y1="222" x2="258" y2="222" stroke="#6b5a3e" stroke-width="1.3"/>
+        <rect x="258" y="209" width="152" height="26" rx="2" fill="#ede8dc" stroke="#d4cbbf"/>
+        <text x="334" y="226" text-anchor="middle" font-size="11" fill="#1a1510">Int. simbólica</text>
+
+        <rect x="426" y="176" width="256" height="58" rx="3" fill="#fdfaf4" stroke="#d4cbbf" stroke-dasharray="5,3"/>
+        <text x="442" y="195" font-size="9.5" fill="#6b5a3e" font-style="italic">Husserl entra por la percepción</text>
+        <text x="442" y="210" font-size="9.5" fill="#6b5a3e" font-style="italic">(sensible), no por el lenguaje</text>
+        <text x="442" y="225" font-size="8.5" fill="#8b3a2a" font-family="'Space Mono', monospace">← clase de hoy</text>
+
+        <line x1="56" y1="290" x2="96" y2="290" stroke="#c9973a" stroke-width="2"/>
+        <rect x="96" y="274" width="134" height="32" rx="2" fill="#c9973a"/>
+        <text x="163" y="295" text-anchor="middle" font-size="10.5" fill="#fdfaf4" font-family="'Space Mono', monospace" letter-spacing="1">MODELO</text>
+
+        <rect x="242" y="277" width="220" height="26" rx="2" fill="#fdfaf4" stroke="#d4cbbf" stroke-dasharray="4,2"/>
+        <text x="352" y="294" text-anchor="middle" font-size="10.5" fill="#6b5a3e" font-style="italic">correlación noesis / noema</text>
+
+        <line x1="56" y1="370" x2="96" y2="370" stroke="#c9973a" stroke-width="2"/>
+        <rect x="96" y="350" width="134" height="42" rx="2" fill="#6b5a3e"/>
+        <text x="163" y="368" text-anchor="middle" font-size="10" fill="#fdfaf4" font-family="'Space Mono', monospace" letter-spacing="0.5">F. EIDÉTICO</text>
+        <text x="163" y="383" text-anchor="middle" font-size="9" fill="#c9973a" font-family="'Space Mono', monospace">(eidos)</text>
+
+        <line x1="229" y1="345" x2="229" y2="401" stroke="#6b5a3e" stroke-width="1.5"/>
+        <line x1="229" y1="352" x2="258" y2="352" stroke="#6b5a3e" stroke-width="1.3"/>
+        <rect x="258" y="339" width="130" height="26" rx="2" fill="#fdfaf4" stroke="#d4cbbf"/>
+        <text x="323" y="356" text-anchor="middle" font-size="11" fill="#1a1510">Formales</text>
+        <line x1="229" y1="390" x2="258" y2="390" stroke="#6b5a3e" stroke-width="1.3"/>
+        <rect x="258" y="377" width="130" height="26" rx="2" fill="#fdfaf4" stroke="#d4cbbf"/>
+        <text x="323" y="394" text-anchor="middle" font-size="11" fill="#1a1510">Materiales</text>
+
+        <defs>
+          <marker id="aRust5" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L7,3 z" fill="#8b3a2a"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <h3>Cada nodo del esquema, explicado</h3>
+
+    <div class="concepto">
+      <span class="concepto-label">ESTRUCTURAS — los dos ejes de la conciencia</span>
+      <p>Las estructuras son los dos ejes fundamentales sobre los que Husserl organiza toda su descripción de la conciencia:</p>
+      <ul>
+        <li><strong>1. Intencionalidad:</strong> toda conciencia es conciencia <em>de</em> algo. No hay acto sin correlato, no hay objeto sin acto que lo constituya. Es la estructura que orienta — la "dirección hacia" que define a la conciencia frente a cualquier cosa.</li>
+        <li><strong>2. Temporal:</strong> la conciencia no existe en un instante puntual sino como <em>flujo</em>. La profe lo formuló así: <em>«síntesis inmediata de las síntesis temporales = proceso de síntesis para la conciencia = modo de la intencionalidad»</em>. Cada vivencia es en sí misma una síntesis que ocurre en el tiempo y que unifica otras síntesis anteriores.</li>
+      </ul>
+      <p style="margin:0">Ambas estructuras son inseparables: la intencionalidad opera siempre dentro del flujo temporal, y el flujo temporal solo tiene sentido como flujo de actos intencionales. No hay una sin la otra.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">FUNCIONES — los dos modos de la intencionalidad</span>
+      <p>Dentro de la estructura intencional, Husserl distingue dos modos funcionales de operación:</p>
+      <ul>
+        <li><strong>Intencionalidad sensible:</strong> el plano perceptivo-hylético. Es el nivel de los datos de los sentidos (<span class="t">hylé</span>), de la experiencia directa, del cuerpo situado en el mundo. <strong>Es por aquí por donde Husserl entra</strong>: no por el lenguaje sino por la percepción.</li>
+        <li><strong>Intencionalidad simbólica:</strong> el plano categorial-lógico. Es el nivel del pensamiento conceptual, el lenguaje, el juicio, las operaciones formales. Se funda y se levanta sobre la intencionalidad sensible — no hay símbolo sin un fondo perceptivo que lo ancle.</li>
+      </ul>
+      <p style="margin:0">Este orden importa: Husserl parte de la percepción para llegar al símbolo, no al revés. El lenguaje no funda la experiencia; la experiencia funda el lenguaje.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">MODELO — la correlación noesis/noema</span>
+      <p>El "modelo" en el esquema es el <strong>instrumento analítico central</strong> de Husserl: la correlación intencional <span class="t">noesis</span>–<span class="t">noema</span>. Todo acto de conciencia tiene dos caras que son inseparables pero analíticamente distinguibles:</p>
+      <ul>
+        <li><strong>Noesis:</strong> el acto mismo en su modo de ejecución — el cómo del intencionar (percibir, recordar, juzgar, valorar).</li>
+        <li><strong>Noema:</strong> el correlato objetivo del acto — el objeto tal como es dado y mentado, el "sentido" del acto.</li>
+      </ul>
+      <p style="margin:0">Este modelo es la herramienta con la que trabajan los §§15–16 y con la que se construye toda descripción fenomenológica posterior.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">F. EIDÉTICO (eidos) — Formales y Materiales</span>
+      <p>La fenomenología husserliana no describe solo hechos individuales de conciencia sino <strong>esencias</strong> (<em>Wesen</em> / <em>eidos</em>): estructuras necesarias e invariantes. La reducción eidética permite ir de casos particulares a estructuras universales. Hay dos tipos de esencias:</p>
+      <ul>
+        <li><strong>Esencias formales:</strong> pertenecen a la ontología formal — se aplican a cualquier objeto posible sin importar su contenido.</li>
+        <li><strong>Esencias materiales:</strong> son propias de <em>regiones</em> de objetos específicas. La fenomenología trascendental opera en la región "conciencia" — describe las estructuras eidéticas propias de la vida de la conciencia.</li>
+      </ul>
+      <p style="margin:0">Esto es lo que diferencia a Husserl de Descartes y de Kant: no trabaja ni con una sustancia empírica ni con categorías a priori vacías de contenido temporal.</p>
+    </div>
+
+    <h3>Reino subjetivo puro y método eidético</h3>
+
+    <div class="concepto">
+      <span class="concepto-label">Reino de lo nunca hollado</span>
+      <p>La profesora recuperó una imagen de <em>Ideas I</em>: Husserl como un barquero que rema sobre un territorio todavía no descubierto. Ese territorio es la subjetividad trascendental, nombrada también como <em>reino subjetivo puro</em>, <em>horizonte infinito</em> o <em>a priori trascendental</em>.</p>
+      <p style="margin:0">Lo decisivo es que este ego trascendental no surge como inferencia cartesiana ni como residuo de una duda escéptica, sino como un <strong>a priori</strong> que se descubre al ejecutar la reducción.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Apodicticidad: problema abierto</span>
+      <p>La clase marcó aquí una dificultad fuerte: si esta esfera es apodíctica, parecería que debería ser permanente e inmutable. Pero el ego puro vive percepciones, recuerdos, fantasías y pensamientos que cambian.</p>
+      <p style="margin:0">Por eso Husserl deja provisionalmente en suspenso la cuestión de la apodicticidad acabada y se concentra primero en describir las estructuras de esta subjetividad. Antes de decidir qué permanece idéntico, hay que aclarar qué se está describiendo.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Fenomenología eidética</span>
+      <p>El comienzo del análisis es eidético, no genético. Husserl busca <strong>esencias</strong>: aquello general que permanece como posibilidad o estructura del fenómeno.</p>
+      <p><strong>Eidos formales:</strong> número, identidad, diferencia, contradicción, necesidad.</p>
+      <p style="margin:0"><strong>Eidos materiales:</strong> géneros concretos describibles como hombre, niño, animal o perro. La apuesta metodológica es que, aunque los casos empíricos cambien, la esencia permite captar una estructura universal.</p>
+    </div>
+
+    <div class="nota-profe">
+      Primero describamos qué es la subjetividad trascendental; después discutimos lo otro.
+    </div>
+
+    <h3>Solipsismo metodológico e intersubjetividad</h3>
+
+    <div class="nota-profe">
+      Apodicticidad = Intersubjetividad.
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Apodicticidad e intersubjetividad</span>
+      <p>La <span class="t">apodicticidad</span> es la forma más alta de evidencia: una evidencia que no admite duda posible. Pero si esa apodicticidad quedara anclada solo en <em>mi</em> ego, la ciencia no alcanzaría validez objetiva y universal.</p>
+      <p style="margin:0">Como adelantaba la profe, la apodicticidad genuina exige intersubjetividad: solo se completa realmente cuando la validez puede extenderse a toda conciencia posible. Ahí está ya prefigurado el paso hacia el §51.</p>
+    </div>
+
+    <div class="nota-valentina">
+      La fenomenología (ciencia egológica) es solipsista por fines metodológicos.
+    </div>
+
+    <div class="nota-profe">
+      Por un rato, sí. Por un rato nomás. Después vamos a salir de ahí, pero por ahora sí.
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Solipsismo provisional</span>
+      <p>La profe adelantó el problema de §13 con total claridad: por un rato, sí, la fenomenología es solipsista. Cada uno queda solo con su propio ego puro, porque todavía no ha aparecido el otro.</p>
+      <p style="margin:0">Pero se trata de un <strong>solipsismo metodológico</strong>. Más adelante la fenomenología trascendental se revelará como intersubjetividad trascendental, y el encierro inicial del yo será roto desde dentro por la aparición del otro yo.</p>
+    </div>
+
+    <h3>Noema, noesis y constitución</h3>
+
+    <div class="concepto">
+      <span class="concepto-label">Lo que quedó planteado para §§14–19</span>
+      <p>En el ego cogito, el <strong>noema</strong> es el objeto tal como es mentado y la <strong>noesis</strong> es el acto mismo de conciencia. La botella puede aparecer como presente, pasada o futura; como cierta, dudosa o probable. Todo objeto de conciencia se da bajo una modalidad.</p>
+      <p><strong>Co-mentado:</strong> junto con lo dado aparecen horizontes implícitos: perfiles no vistos, luz, suelo, posición del cuerpo, posibilidades de movimiento. El objeto no se agota en lo temático.</p>
+      <p style="margin:0">La constitución nombra precisamente esa unidad noético-noemática: ni el sujeto ni el objeto son simples, porque ambos se sostienen en síntesis y multiplicidades.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Conexión con §51</span>
+      <p>La salida del solipsismo que aquí apenas queda anunciada será el problema central de la Quinta meditación. El otro yo no entra desde afuera: se prepara desde la estructura intencional, los horizontes y la constitución del ego trascendental.</p>
+      <p style="margin:0">Por eso el §51 no empieza de cero. Requiere todo este rodeo por la intencionalidad, la temporalidad y el carácter sintético de la experiencia.</p>
+    </div>
+
+    <div class="nota-valentina">
+      Para §§15, 19: subjetividad absoluta = flujo temporal. Su estructura es intencional y temporal.
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Adelanto — §19: subjetividad absoluta</span>
+      <p>La profe adelantó que el §19 lleva a una tesis fuerte: la <strong>subjetividad trascendental es subjetividad absoluta</strong>, y lo que la hace absoluta es precisamente su estructura temporal. No hay nada "detrás" del flujo que lo sostenga; el flujo mismo <em>es</em> la conciencia.</p>
+      <p style="margin:0">Eso distingue a Husserl tanto de la <em>res cogitans</em> cartesiana como del sujeto trascendental kantiano: aquí la subjetividad no es sustancia ni mera condición formal, sino fluir intencional-temporal.</p>
+    </div>
+
+    <div class="nota-valentina">
+      En la 4ta meditación el ego puro encuentra un alter ego. El ego puro se da cuenta que siempre estuvo en el mundo circundante, donde están los otros (organismos vivos, alter ego). En su acto intencional tienes sus propias convicciones y convivencias.
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Adelanto — el ego puro encuentra al alter ego</span>
+      <p>Este es el movimiento que conduce de las primeras meditaciones a la Quinta: el ego puro termina reconociendo que nunca estuvo aislado de un <strong>mundo circundante</strong> habitado por otros organismos vivos.</p>
+      <p style="margin:0">Esos otros no son simplemente objetos: son seres con actos intencionales propios, convicciones y modos de convivencia. Por eso el problema del <span class="t">alter ego</span> no llega desde afuera, sino que brota desde dentro del propio análisis fenomenológico.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       SECCIÓN 6 — LO REAL / REELL
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>Intercambio en clase — ¿Qué es real para la conciencia?</h2>
+
+    <div class="mi-pregunta">
+      ¿Qué es REAL a mi conciencia?
+    </div>
+
+    <p>La aclaración de esta parte de la clase fue decisiva: desde la <strong>actitud natural</strong> podemos decir que una alucinación "no es real" porque no corresponde a ningún objeto del mundo. Pero dentro de la <strong>subjetividad trascendental</strong> esa alucinación sí es real como vivencia de conciencia.</p>
+
+    <div class="nota-profe">
+      No son del mundo, sino de la conciencia: solo las cogitaciones son reales (<em>reell</em>) a la conciencia.
+    </div>
+
+    <!-- SVG reell vs real intencional -->
+    <div class="svg-label">Diagrama · Reell vs. Real intencional</div>
+    <div class="svg-wrap">
+      <svg viewBox="0 0 620 195" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, serif">
+        <rect width="620" height="195" fill="#fdfaf4" rx="3"/>
+
+        <!-- zona reell -->
+        <rect x="20" y="20" width="280" height="155" rx="4" fill="#ede8dc" stroke="#c9973a" stroke-width="1.5"/>
+        <text x="160" y="42" text-anchor="middle" font-size="10" fill="#c9973a" font-family="'Space Mono', monospace" letter-spacing="2">REELL (inmanente)</text>
+        <text x="160" y="60" text-anchor="middle" font-size="10.5" fill="#6b5a3e" font-style="italic">componentes reales del acto</text>
+
+        <!-- items reell -->
+        <rect x="38" y="70" width="242" height="24" rx="2" fill="#f5f0e8" stroke="#d4cbbf"/>
+        <text x="50" y="86" font-size="10.5" fill="#1a1510">noesis — el acto intencional</text>
+
+        <rect x="38" y="100" width="242" height="24" rx="2" fill="#f5f0e8" stroke="#d4cbbf"/>
+        <text x="50" y="116" font-size="10.5" fill="#1a1510">hylé — datos sensoriales brutos</text>
+
+        <rect x="38" y="130" width="242" height="34" rx="2" fill="#1a1510"/>
+        <text x="50" y="148" font-size="10.5" fill="#c9973a" font-weight="bold">cogitaciones</text>
+        <text x="50" y="160" font-size="9.5" fill="#f5f0e8">vivencias en su ocurrencia concreta</text>
+
+        <!-- zona no reell -->
+        <rect x="320" y="20" width="280" height="155" rx="4" fill="#f5f0e8" stroke="#8b3a2a" stroke-width="1.5" stroke-dasharray="6,3"/>
+        <text x="460" y="42" text-anchor="middle" font-size="10" fill="#8b3a2a" font-family="'Space Mono', monospace" letter-spacing="1">REAL INTENCIONAL</text>
+        <text x="460" y="60" text-anchor="middle" font-size="10.5" fill="#6b5a3e" font-style="italic">correlato intencional, trascendente al acto</text>
+
+        <rect x="338" y="70" width="242" height="24" rx="2" fill="#fdfaf4" stroke="#d4cbbf" stroke-dasharray="4,2"/>
+        <text x="350" y="86" font-size="10.5" fill="#6b5a3e" font-style="italic">noema — objeto tal como dado</text>
+
+        <rect x="338" y="100" width="242" height="24" rx="2" fill="#fdfaf4" stroke="#d4cbbf" stroke-dasharray="4,2"/>
+        <text x="350" y="116" font-size="10.5" fill="#6b5a3e" font-style="italic">la mesa, la melodía, el árbol...</text>
+
+        <rect x="338" y="130" width="242" height="34" rx="2" fill="#fdfaf4" stroke="#8b3a2a" stroke-dasharray="4,2"/>
+        <text x="350" y="148" font-size="10" fill="#8b3a2a" font-style="italic">cogitata qua cogitata</text>
+        <text x="350" y="162" font-size="9.5" fill="#6b5a3e">los objetos en tanto pensados</text>
+
+        <!-- separador central -->
+        <text x="310" y="105" text-anchor="middle" font-size="22" fill="#d4cbbf">|</text>
+      </svg>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Distinción crucial: reell vs. real (intencional)</span>
+      <p>Husserl distingue dos sentidos de "real" que en español colapsan en la misma palabra, pero en alemán son distintos:</p>
+      <ul>
+        <li><strong><span class="t">Reell</span> (real inmanente):</strong> lo que pertenece <em>genuinamente, como componente</em>, a la vivencia misma. Lo que está literalmente dentro del acto de conciencia como parte suya. Solo las <strong>cogitaciones</strong> son <em>reell</em>.</li>
+        <li><strong><span class="t">Real (intencional)</span>:</strong> el objeto al que la conciencia apunta — la mesa, el árbol, la melodía. Este objeto <em>no</em> está dentro de la conciencia; es el correlato intencional, el noema. Es "mentado", no contenido.</li>
+      </ul>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">¿Qué son las cogitaciones?</span>
+      <p>Las <strong>cogitaciones</strong> (<em>cogitationes</em>) son las vivencias intencionales mismas en su ocurrencia concreta: el acto de percibir <em>ahora</em>, el acto de recordar <em>ahora</em>, el acto de imaginar <em>ahora</em>. Son los eventos mentales efectivos, los actos de conciencia tal como realmente ocurren.</p>
+      <p>Son <em>reell</em> porque:</p>
+      <ul>
+        <li>Son partes literales de la corriente de vivencias (el flujo de consciencia).</li>
+        <li>No son trascendentes al acto: están dentro de él como sus componentes reales.</li>
+        <li>Incluyen tanto la noesis (el acto en sí) como las <span class="t">hylé</span> (los datos sensoriales brutos, el "material" que la noesis anima y da sentido).</li>
+      </ul>
+      <p><strong>Lo que NO es reell:</strong> el objeto intencional (el noema). La mesa como objeto trascendente no está dentro de mi conciencia; solo el acto de percibirla lo está. El noema es el <em>sentido</em> del acto, no un contenido real de él.</p>
+      <p style="margin:0"><em>Ejemplo concreto:</em> si escucho una melodía — lo <em>reell</em> son: las sensaciones sonoras (hylé), el acto de escuchar-como-melodía (noesis), la intención de unidad que sintetiza los sonidos sucesivos. La melodía-en-tanto-que-escuchada (noema) es intencional, no reell.</p>
+    </div>
+
+    <div class="concepto">
+      <span class="concepto-label">Las alucinaciones son «reales» en sentido reell</span>
+      <div class="nota-valentina">
+        Las alucinaciones son "reales" en el sentido REELL del término.
+      </div>
+      <p>Un caso límite que ilumina la distinción: cuando alguien tiene una alucinación, el objeto alucinado <em>no existe</em> en el mundo — no hay ninguna cosa real ahí fuera. Pero la vivencia alucinatoria <strong>sí es <em>reell</em></strong>: el acto de ver/escuchar/sentir ocurre efectivamente como componente real de la corriente de conciencia. Las hylé (datos sensoriales) están presentes, la noesis los anima, la experiencia es genuina como vivencia.</p>
+      <p style="margin:0">Esto confirma que <em>reell</em> no significa "corresponde a algo en el mundo", sino "pertenece genuinamente al acto de conciencia como parte suya". La distinción no separa "real" y "ficticio" en el sentido cotidiano, sino componente inmanente de la vivencia y correlato intencional de la vivencia. Por eso la alucinación tiene el mismo estatuto reell que una percepción verídica.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       GLOSARIO
+  ══════════════════════════════════════════════════ -->
+  <section>
+    <h2>Glosario de términos clave</h2>
+
+    <div class="glosario-item">
+      <div class="glosario-term">epoché / reducción</div>
+      <div>Suspensión de la tesis de existencia del mundo natural. No negamos el mundo; ponemos entre paréntesis el juicio sobre su existencia independiente.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">ego trascendental</div>
+      <div>Lo que queda tras la epoché. No el yo empírico sino la estructura pura de conciencia, condición de posibilidad de toda experiencia.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">yo-persona / ego empírico</div>
+      <div>El sí mismo en el mundo natural, con circunstancias, cuerpo e historia. Es nuestro punto de acceso a la reducción, pero no el tema filosófico último.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">ego sí mismo / mónada</div>
+      <div>El ego trascendental considerado en la unidad concreta de su corriente de vivencias y horizontes. No equivale al yo-persona mundano.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">intencionalidad</div>
+      <div>Toda conciencia es conciencia de algo. La conciencia siempre está dirigida hacia un objeto.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">noesis</div>
+      <div>El acto intencional mismo (percibir, juzgar, recordar…). Lado subjetivo de la vivencia.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">noema</div>
+      <div>El objeto en cuanto dado en la conciencia. Lado objetivo-intencional. ≠ objeto real del mundo.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">hylé</div>
+      <div>Datos sensoriales brutos — el "material" de la vivencia antes de que la noesis le dé forma intencional. Son reell. Su constitución es temporal (retención–impresión–protención).</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">reell</div>
+      <div>Inmanente al acto. Componente genuino de la vivencia. Solo las cogitaciones y sus partes (noesis, hylé) son reell.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">cogitata qua cogitata</div>
+      <div>Los objetos en tanto que son pensados como tales. Expresión latina del noema.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">co-mentado / horizonte</div>
+      <div>Lo implícitamente mentado junto con lo dado de manera temática: perfiles no vistos, anticipaciones, condiciones de aparición y posibilidades de continuación de la experiencia.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">constitución</div>
+      <div>Proceso por el cual una unidad de sentido se forma en la correlación entre noesis y noema. El objeto y el sujeto se articulan desde síntesis y multiplicidades, no como términos simples.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">retención</div>
+      <div>El justo-pasado aún retenido vivamente en el presente. No es recuerdo (que es un acto secundario).</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">protención</div>
+      <div>La expectativa intencional del futuro inmediato. No es anticipación consciente; es estructural a cada acto.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">Abschattungen</div>
+      <div>Escorzos: las perspectivas parciales desde las que se da un objeto. Ninguna lo agota; todas apuntan hacia él.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">síntesis pasiva</div>
+      <div>Unificación de vivencias que opera sin actividad del entendimiento, desde la temporalidad inmanente. Se distingue de la síntesis activa kantiana.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">esfera de propiedad</div>
+      <div>Resultado de una segunda reducción que abstrae todo lo ajeno. Núcleo de experiencias absolutamente propias del ego; base para la fenomenología de la intersubjetividad.</div>
+    </div>
+    <div class="glosario-item">
+      <div class="glosario-term">solipsismo trascendental</div>
+      <div>Encierro metódico inicial en el propio ego trascendental. Es un momento provisional del análisis, no la tesis de que solo yo existo; se supera con la fenomenología de la intersubjetividad.</div>
+    </div>
+  </section>
+
+  <footer>
+    Apuntes de clase ordenados y expandidos · Fenomenología · Husserl, Meditaciones Cartesianas · Introducción + §§ 1–19
+  </footer>
+
+</div>
+</body>
+</html>
